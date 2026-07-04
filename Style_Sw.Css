@@ -602,9 +602,9 @@ section {
 
 .footer-hibiscus {
     position: absolute;
-    right: 20px;
+    right: 15px;
     bottom: 80px;
-    width: 350px;
+    width: 330px;
     opacity: .4;
     pointer-events: none;
     user-select: none;

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Dishes — Warisan Malaysia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="Style_Sw.css">
+    <style>
+        /* ── Page Header ───────────────────────────────── */
+        .dishes-hero {
+            text-align: center;
+            padding: 80px 24px 56px;
+            background: transparent;
+        }
+
+        .dishes-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4.5vw, 3.4rem);
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--maroon);
+            margin-bottom: 16px;
+        }
+
+        .dishes-hero-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.9;
+        }
+
+        /* ── Main Layout ───────────────────────────────── */
+        .dishes-layout {
+            padding: 0 24px 72px;
+        }
+
+        .dishes-grid {
+            max-width: 850px;
+            margin: 2vw auto;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* ── Carousel Column ───────────────────────────── */
+        .carousel-col {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        /* Controls: arrows + dot track */
+        .carousel-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+            flex-shrink: 0;
+        }
+
+        .carousel-arrow {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid var(--gold);
+            background: none;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.1s, color 0.2s;
+            flex-shrink: 0;
+            border-radius: 100%;
+        }
+
+        .carousel-arrow:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        .carousel-track {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 6px 0;
+            position: relative;
+        }
+
+
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            background: transparent;
+            margin: 5px 0;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            transition: background 0.2s, transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--maroon);
+            border-color: var(--maroon);
+            transform: scale(1.3);
+        }
+
+        /* Circle image display */
+        .carousel-img-wrap {
+            flex: 1;
+            aspect-ratio: 1 / 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed rgba(201, 151, 58, 0.55);
+        }
+
+        .carousel-img-inner {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: #E4EAF4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-img-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .carousel-img-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ── Dish Detail Card ──────────────────────────── */
+        .dish-card {
+            border: 1.5px solid rgba(201, 151, 58, 0.45);
+            border-radius: 8px;
+            padding: 28px 30px 26px;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .dish-card.fading {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .dish-region {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.26em;
+            color: var(--gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .dish-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4.5vw, 2rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--maroon);
+            margin-bottom: 14px;
+            line-height: 1.15;
+        }
+
+        .dish-tagline-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .dish-tagline-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--gold);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tagline-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .dish-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.98rem;
+            color: var(--navy-lt);
+            line-height: 1.82;
+            margin-bottom: 22px;
+        }
+
+        /* Two-column info grid */
+        .dish-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 28px;
+            border-top: 1px solid rgba(201, 151, 58, 0.2);
+            padding-top: 18px;
+        }
+
+        .dish-info-label {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .dish-elements-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .dish-elements-list li {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.78rem;
+            color: var(--navy-lt);
+            line-height: 1.7;
+            padding-left: 10px;
+            position: relative;
+        }
+
+
+        .dish-history-text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.78rem;
+            color: var(--navy-lt);
+            line-height: 1.75;
+        }
+
+        /* ── Featured Section ──────────────────────────── */
+        .featured-section {
+            padding: 0 24px 80px;
+        }
+
+        .featured-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .featured-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4.5vw, 1.45rem);
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--maroon);
+            margin-bottom: 6px;
+        }
+
+        .featured-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.92rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .featured-divider {
+            border: none;
+            border-top: 1px solid rgba(42, 58, 92, 0.12);
+            margin-bottom: 24px;
+        }
+
+        /* Gallery row */
+        .gallery-row {
+            display: flex;
+            gap: 14px;
+            align-items: flex-end;
+        }
+
+        .gallery-card {
+            border-radius: 10px;
+            background: #E4EAF4;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(42, 58, 92, 0.14);
+        }
+
+        .gallery-card-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(42, 58, 92, 0.3);
+        }
+
+        .gc-lg {
+            width: 200px;
+            height: 220px;
+        }
+
+        .gc-md {
+            width: 175px;
+            height: 185px;
+        }
+
+        .gc-sm {
+            width: 140px;
+            height: 155px;
+        }
+
+        .gc-xs {
+            width: 120px;
+            height: 135px;
+        }
+
+        /* ── Responsive ────────────────────────────────── */
+        @media (max-width: 820px) {
+            .dishes-grid {
+                grid-template-columns: 1fr;
+                max-width: 480px;
+            }
+
+            .carousel-col {
+                justify-content: center;
+            }
+
+            .carousel-img-wrap {
+                max-width: 280px;
+            }
+
+            .gallery-row {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .gc-lg,
+            .gc-md,
+            .gc-sm,
+            .gc-xs {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dish-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dishes-hero-title {
+                letter-spacing: 0.1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════ NAV ═══════════════ -->
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-inner">
+
+            <!-- Brand -->
+            <a href="Homepage_Sw.html" class="nav-brand">
+                <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+            </a>
+
+            <!-- Hamburger (mobile only) -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
+            </button>
+
+            <!-- Nav links -->
+            <div class="nav-links-wrapper" id="navLinks">
+
+                <a href="Homepage_Sw.html" class="nav-link">Home</a>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Discover
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+                        <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
+                        <a href="#" class="dropdown-item">Hidden Gems</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Culture
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Craft Gallery</a>
+                        <a href="#" class="dropdown-item">Living Traditions</a>
+                        <a href="#" class="dropdown-item">Spiritual Spaces</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link active">
+                        Taste &amp; Celebrate
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+                        <a href="Festivals_Sw.html" class="dropdown-item">Jubilee Festivals</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Plan Your Trip
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Travel Essentials</a>
+                        <a href="#" class="dropdown-item">Expedition Itineraries</a>
+                        <a href="#" class="dropdown-item">Cultural Etiquette</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ═══════════════ PAGE HEADER ═══════════════ -->
+    <div class="dishes-hero">
+        <h1 class="dishes-hero-title">CULTURAL DISHES</h1>
+        <p class="dishes-hero-sub">
+            An ancient tapestry of flavour woven across Malay, Chinese, Indian, and Bornean kitchens,<br>
+            where every ingredient carries the memory of a civilization
+        </p>
+    </div>
+
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <div class="dishes-layout">
+        <div class="dishes-grid">
+
+            <!-- ── Carousel Column ─────────────────── -->
+            <div class="carousel-col">
+
+                <!-- Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" id="arrowUp" aria-label="Previous dish">
+                        <i class="ph ph-caret-up" aria-hidden="true"></i>
+                    </button>
+                    <div class="carousel-track" id="dotTrack">
+                        <!-- dots added by JS -->
+                    </div>
+                    <button class="carousel-arrow" id="arrowDown" aria-label="Next dish">
+                        <i class="ph ph-caret-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <!-- Circular image -->
+                <div class="carousel-img-wrap">
+                    <div class="carousel-ring"></div>
+                    <div class="carousel-img-inner" id="dishImgInner">
+                        <img src="Assets/nasi-lemak.png" style="filter:saturate(0.8) brightness(0.95);" alt="Dish Image"
+                            id="dishImg">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- ── Dish Detail Card ────────────────── -->
+            <div class="dish-card" id="dishCard">
+                <div class="dish-region" id="dishRegion">PENINSULAR REGION</div>
+                <h2 class="dish-name" id="dishName">FRAGRANT NASI LEMAK</h2>
+
+                <div class="dish-tagline-row">
+                    <span class="dish-tagline-text" id="dishTagline">"Where the Empire Began"</span>
+                    <div class="tagline-line"></div>
+                </div>
+
+                <p class="dish-desc" id="dishDesc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                    labore et dolore magna aliqua. Quis ipsum suspendisse labore et dolore magna aliqua.
+                </p>
+
+                <div class="dish-info-grid">
+                    <div>
+                        <p class="dish-info-label">Core Elements :</p>
+                        <ul class="dish-elements-list" id="dishElements">
+                            <li>Lorem ipsum dolor sit</li>
+                            <li>amet, consectetur adipiscing</li>
+                            <li>elit, sed do eiusmod tempor</li>
+                            <li>incididunt ut labore</li>
+                            <li>et dolore magna aliqua.</li>
+                            <li>Quis ipsum suspendisse</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="dish-info-label">History Notes :</p>
+                        <p class="dish-history-text" id="dishHistory">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
+                            suspendisse Quis ipsum Quis ipsum suspendisse
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ═══════════════ FEATURED SECTION ═══════════════ -->
+    <div class="featured-section">
+        <div class="featured-inner">
+            <h3 class="featured-heading" id="featuredHeading">THE BOTANICAL BENTO BOX</h3>
+            <p class="featured-sub" id="featuredSub">An Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            </p>
+            <hr class="featured-divider">
+
+            <div class="gallery-row">
+                <div class="gallery-card gc-md">
+                    <div class="gallery-card-img">
+                        <i class="ph ph-image" style="font-size:30px;"></i>
+                    </div>
+                </div>
+                <div class="gallery-card gc-lg">
+                    <div class="gallery-card-img">
+                        <i class="ph ph-image" style="font-size:34px;"></i>
+                    </div>
+                </div>
+                <div class="gallery-card gc-sm">
+                    <div class="gallery-card-img">
+                        <i class="ph ph-image" style="font-size:26px;"></i>
+                    </div>
+                </div>
+                <div class="gallery-card gc-xs">
+                    <div class="gallery-card-img">
+                        <i class="ph ph-image" style="font-size:22px;"></i>
+                    </div>
+                </div>
+                <div class="gallery-card gc-sm">
+                    <div class="gallery-card-img">
+                        <i class="ph ph-image" style="font-size:26px;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <div class="footer" id="plan">
+        <img src="Assets/hibiscus.png" alt="" class="footer-hibiscus" draggable="false">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+            <div class="footer-brand">
+                <a href="Homepage_Sw.html" class="logo"
+                    style="display:flex;align-items:center;gap:10px;text-decoration:none;color:white;margin-bottom:16px;">
+                    <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
+                    <span
+                        style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.18em;color:white;">WARISAN
+                        MALAYSIA</span>
+                </a>
+                <p class="footer-desc">An award-winning editorial journal tracing the majestic, living synthesis of
+                    Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
+                <div class="footer-socials">
+                    <div class="social-icon" title="Email">
+                        <i class="ph ph-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="social-icon" title="Phone">
+                        <i class="ph ph-phone" aria-hidden="true"></i>
+                    </div>
+                    <div class="social-icon" title="Location">
+                        <i class="ph ph-map-pin" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discover -->
+            <div>
+                <h4 class="footer-col-title">DISCOVER</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Cities Archive</a></li>
+                    <li><a href="#">Landmarks &amp; Monuments</a></li>
+                    <li><a href="#">Hidden Gems</a></li>
+                </ul>
+                <h4 class="footer-col-title">PLAN YOUR TRIP</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Travel Essentials</a></li>
+                    <li><a href="#">Expedition Itineraries</a></li>
+                    <li><a href="#">Cultural Etiquette</a></li>
+                </ul>
+            </div>
+
+            <!-- Culture -->
+            <div>
+                <h4 class="footer-col-title">CULTURE</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Craft Gallery</a></li>
+                    <li><a href="#">Living Traditions</a></li>
+                    <li><a href="#">Spiritual Spaces</a></li>
+                </ul>
+                <h4 class="footer-col-title" style="margin-top:28px;">TASTE &amp; CELEBRATE</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Signature Dishes</a></li>
+                    <li><a href="#">Jubilee Festivals</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 All rights Reserved
+        </div>
+    </div>
+
+
+    <script>
+        /* ══════════════════════════════════════════════
+           Dish Data
+        ══════════════════════════════════════════════ */
+        const DISHES = [
+            {
+                region: 'PENINSULAR REGION',
+                name: 'FRAGRANT NASI LEMAK',
+                tagline: '"Where the Empire Began"',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse labore et dolore magna aliqua. Quis ipsum suspendisse labore et dolore magna aliqua.',
+                elements: ['Pandan-scented coconut rice', 'Crispy ikan bilis', 'Roasted groundnuts', 'Half-boiled egg', 'Cucumber slices', 'Fiery sambal paste'],
+                history: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse Quis ipsum Quis ipsum suspendisse',
+                featured: 'THE BOTANICAL BENTO BOX',
+                featuredSub: 'An Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
+            },
+            {
+                region: 'PENINSULAR REGION',
+                name: 'RENDANG TOK',
+                tagline: '"The Warrior\'s Feast"',
+                desc: 'Rendang Tok is the slow-cooked dry rendang of the Perak royal court, simmered for hours until the coconut milk caramelises into a rich, dark crust. Each village guard the recipe jealously across generations.',
+                elements: ['Grass-fed beef short ribs', 'Kerisik toasted coconut', 'Lemongrass stalks', 'Galangal root', 'Dried chillies', 'Turmeric leaf'],
+                history: 'Originating from the Perak royal household in the 18th century, Rendang Tok was served exclusively at royal banquets. Its preservation method — cooking until bone-dry — allowed it to last weeks on military campaigns.',
+                featured: 'THE RENDANG TOK CEREMONY',
+                featuredSub: 'A slow-cook ritual passed down through the Perak royal kitchen',
+            },
+            {
+                region: 'PENANG HERITAGE',
+                name: 'CHAR KWAY TEOW',
+                tagline: '"Smoke and Memory"',
+                desc: 'Char Kway Teow is the celebrated wok-fried flat noodle of Penang, cooked at blistering heat over charcoal flame to achieve the elusive wok hei — the smoky breath of a well-seasoned iron wok.',
+                elements: ['Flat rice noodles', 'Fresh cockles', 'Chinese sausage', 'Bean sprouts', 'Egg', 'Dark soy sauce'],
+                history: 'The dish traces back to Penang\'s Chinese immigrant labourers in the 19th century, who needed a cheap, high-calorie meal to sustain their work at the docks and paddy fields of Seberang Perai.',
+                featured: 'THE PENANG NIGHT HAWKER TRAIL',
+                featuredSub: 'Follow the smoke signals through Georgetown\'s oldest lanes',
+            },
+            {
+                region: 'BORNEAN HERITAGE',
+                name: 'LAKSA SARAWAK',
+                tagline: '"The River Spice Road"',
+                desc: 'Laksa Sarawak is built on a complex rempah paste of sambal belacan, lemongrass, and galangal, diluted with fresh coconut milk and served with vermicelli, poached prawns, and shredded omelette.',
+                elements: ['Fresh rice vermicelli', 'Tiger prawns', 'Coconut milk broth', 'Belacan sambal', 'Calamansi lime', 'Fresh coriander'],
+                history: 'The recipe arrived with Malay spice traders navigating the Sarawak River delta in the 15th century. Dayak communities adapted the paste with local jungle herbs, creating a distinctly Bornean character unlike any other Malaysian laksa.',
+                featured: 'THE SARAWAK RIVER MARKET',
+                featuredSub: 'Where traders have bartered spices since the 15th century',
+            },
+            {
+                region: 'CHINESE HERITAGE',
+                name: 'BAK KUT TEH',
+                tagline: '"The Herbal Elixir"',
+                desc: 'Bak Kut Teh — pork bone tea — is a Hokkien herbal broth simmered for hours with garlic, star anise, cloves, and dried mushrooms. The Malaysian version tends toward a lighter, peppery clarity compared to its Singaporean counterpart.',
+                elements: ['Pork ribs & belly', 'Dried shiitake mushrooms', 'Tofu puffs', 'Garlic bulbs', 'White pepper', 'Chinese herbs'],
+                history: 'Introduced by Hokkien immigrants in the port towns of Klang and Butterworth in the early 20th century, Bak Kut Teh was originally a restorative morning meal for coolies, served alongside fragrant jasmine rice and strong Chinese tea.',
+                featured: 'THE KLANG VALLEY BROTH TRAIL',
+                featuredSub: 'A century of simmering traditions along the old port district',
+            },
+        ];
+
+        /* ── State ─────────────────────────────────── */
+        let current = 0;
+
+        /* ── DOM refs ──────────────────────────────── */
+        const dishCard = document.getElementById('dishCard');
+        const dishRegion = document.getElementById('dishRegion');
+        const dishName = document.getElementById('dishName');
+        const dishTagline = document.getElementById('dishTagline');
+        const dishDesc = document.getElementById('dishDesc');
+        const dishElements = document.getElementById('dishElements');
+        const dishHistory = document.getElementById('dishHistory');
+        const featuredHeading = document.getElementById('featuredHeading');
+        const featuredSub = document.getElementById('featuredSub');
+        const dotTrack = document.getElementById('dotTrack');
+        const imgInner = document.getElementById('dishImgInner');
+
+        /* ── Build dots ────────────────────────────── */
+        DISHES.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => setDish(i));
+            dotTrack.appendChild(dot);
+        });
+
+        function getDots() {
+            return dotTrack.querySelectorAll('.carousel-dot');
+        }
+
+        /* ── setDish ───────────────────────────────── */
+        function setDish(idx) {
+            if (idx === current) return;
+
+            dishCard.classList.add('fading');
+            imgInner.style.opacity = '0';
+
+            setTimeout(() => {
+                current = idx;
+                const d = DISHES[idx];
+
+                dishRegion.textContent = d.region;
+                dishName.textContent = d.name;
+                dishTagline.textContent = d.tagline;
+                dishDesc.textContent = d.desc;
+                dishHistory.textContent = d.history;
+                featuredHeading.textContent = d.featured;
+                featuredSub.textContent = d.featuredSub;
+
+                dishElements.innerHTML = d.elements.map(el => `<li>${el}</li>`).join('');
+
+                getDots().forEach((dot, i) => dot.classList.toggle('active', i === idx));
+
+                dishCard.classList.remove('fading');
+                imgInner.style.opacity = '1';
+            }, 250);
+        }
+
+        /* ── Arrow buttons ─────────────────────────── */
+        document.getElementById('arrowUp').addEventListener('click', () => {
+            setDish((current - 1 + DISHES.length) % DISHES.length);
+        });
+
+        document.getElementById('arrowDown').addEventListener('click', () => {
+            setDish((current + 1) % DISHES.length);
+        });
+
+        /* ── Mobile Nav ────────────────────────────── */
+        const navToggle = document.getElementById('navToggle');
+        const navLinksWrapper = document.getElementById('navLinks');
+        const navMenuIcon = document.getElementById('navMenuIcon');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navToggle.classList.toggle('open');
+                navLinksWrapper.classList.toggle('open', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+                if (navMenuIcon) navMenuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+            });
+        }
+
+        document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+            link.addEventListener('click', e => {
+                if (window.innerWidth > 768) return;
+                const item = link.closest('.nav-item');
+                if (item && item.querySelector('.dropdown')) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+            }
+            if (!e.target.closest('.main-nav')) {
+                if (navToggle) {
+                    navToggle.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    if (navMenuIcon) navMenuIcon.className = 'ph ph-list';
+                }
+                if (navLinksWrapper) navLinksWrapper.classList.remove('open');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
