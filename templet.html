@@ -4,224 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warisan Malaysia — Where Three Worlds Meet</title>
+    <title>Page Title — Warisan Malaysia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="Style_Sw.css">
 </head>
-
-<style>
-    /* Navigation Bar */
-    .nav-item {
-        position: relative;
-    }
-
-    /* Highlight parent label while dropdown is open */
-    .nav-item:hover>.nav-link,
-    .nav-item:focus-within>.nav-link {
-        color: var(--gold);
-    }
-
-    .nav-item:hover>.nav-link::after,
-    .nav-item:focus-within>.nav-link::after {
-        transform: scaleX(1);
-    }
-
-    /* expansion */
-    .nav-caret {
-        width: 9px;
-        height: 6px;
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 5px;
-        margin-bottom: 0px;
-        transition: transform .28s ease;
-        flex-shrink: 0;
-    }
-
-    .nav-item:hover .nav-caret,
-    .nav-item:focus-within .nav-caret {
-        transform: rotate(180deg);
-    }
-
-    /* Dropdown panel */
-    .dropdown {
-        position: absolute;
-        top: calc(100% + 15px);
-        left: 50%;
-        transform: translateX(-50%) translateY(-8px);
-        background: var(--white);
-        box-shadow: 0 10px 36px rgba(26, 43, 74, .14), 0 2px 8px rgba(0, 0, 0, .06);
-        min-width: 212px;
-        border-top: 2px solid var(--gold);
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity .22s ease, transform .22s ease, visibility .22s;
-        z-index: 200;
-    }
-
-    .nav-item:hover .dropdown,
-    .nav-item:focus-within .dropdown {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(0);
-        pointer-events: auto;
-    }
-
-    /* Individual dropdown link */
-    .dropdown-item {
-        display: block;
-        padding: 12px 22px;
-        font-family: 'Open Sans', sans-serif;
-        font-size: .78rem;
-        font-weight: 400;
-        color: var(--navy-lt);
-        text-decoration: none;
-        letter-spacing: .04em;
-        border-left: 2px solid transparent;
-        transition: color .2s ease, border-left-color .2s ease, padding-left .2s ease, background .2s ease;
-    }
-
-    .dropdown-item:hover {
-        color: var(--gold);
-        border-left-color: var(--gold);
-        background: rgba(201, 151, 58, .06);
-        padding-left: 28px;
-    }
-
-    .dropdown-item+.dropdown-item {
-        border-top: 1px solid rgba(42, 58, 92, .07);
-    }
-
-
-    /* ─── Footer ─────────────────────────────────────────── */
-    .footer {
-        background: var(--navy);
-        color: rgba(255, 255, 255, .75);
-        padding: 60px 24px 30px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 25px 25px 0 0;
-    }
-
-    .footer-hibiscus {
-        position: absolute;
-        right: 20px;
-        bottom: 80px;
-        width: 350px;
-        opacity: .4;
-        pointer-events: none;
-        user-select: none;
-    }
-
-    .footer-grid {
-        max-width: 1080px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1.4fr repeat(3, 1fr);
-        gap: 40px 32px;
-        margin-bottom: 48px;
-    }
-
-    @media (max-width: 768px) {
-        .footer-grid {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .footer-brand {
-            grid-column: 1 / -1;
-        }
-    }
-
-    .footer-brand {
-
-        margin-top: 20px;
-    }
-
-    .footer-brand .logo {
-        margin-bottom: 18px;
-    }
-
-    .footer-brand .logo-text {
-        font-size: .75rem;
-    }
-
-    .footer-desc {
-        font-size: .8rem;
-        line-height: 1.75;
-        color: rgba(255, 255, 255, .6);
-        margin-bottom: 22px;
-        max-width: 230px;
-    }
-
-    .footer-socials {
-        display: flex;
-        gap: 14px;
-    }
-
-    .social-icon {
-        width: 32px;
-        height: 32px;
-        border: 1px solid rgba(255, 255, 255, .25);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255, 255, 255, .6);
-        cursor: pointer;
-        transition: all .3s;
-        font-size: .75rem;
-    }
-
-    .social-icon:hover {
-        border-color: var(--gold);
-        color: var(--gold);
-        background: rgba(201, 151, 58, .1);
-    }
-
-    .footer-col-title {
-        font-family: 'Open Sans', sans-serif;
-        font-size: .72rem;
-        font-weight: 700;
-        letter-spacing: .18em;
-        color: var(--white);
-        margin-bottom: 18px;
-        margin-top: 20px;
-    }
-
-    .footer-links {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        line-height: 1.3;
-    }
-
-    .footer-links a {
-        font-size: .8rem;
-        color: rgba(255, 255, 255, .58);
-        text-decoration: none;
-        transition: color .25s;
-        letter-spacing: .02em;
-    }
-
-    .footer-links a:hover {
-        color: var(--gold-lt);
-    }
-
-    .footer-bottom {
-        max-width: 1080px;
-        margin: 0 auto;
-        text-align: center;
-        padding-top: 24px;
-        border-top: 1px solid rgba(255, 255, 255, .1);
-        font-size: .72rem;
-        color: rgba(255, 255, 255, .35);
-        letter-spacing: .08em;
-    }
-</style>
 
 <body>
 
@@ -229,81 +18,92 @@
     <nav class="main-nav" id="main-nav">
         <div class="nav-inner">
 
-            <a href="Homepage_Sw.html" class="nav-link active">Home</a>
+            <!-- Brand -->
+            <a href="Homepage_Sw.html" class="nav-brand">
+                <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+            </a>
 
-            <!-- Discover -->
-            <div class="nav-item">
-                <a href="Cities_Sw.html" class="nav-link">
-                    Discover
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
-                    <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
-                    <a href="#" class="dropdown-item">Hidden Gems</a>
+            <!-- Hamburger (mobile only) -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Nav links -->
+            <div class="nav-links-wrapper" id="navLinks">
+
+                <a href="Homepage_Sw.html" class="nav-link">Home</a>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Discover
+                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+                        <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
+                        <a href="#" class="dropdown-item">Hidden Gems</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Culture -->
-            <div class="nav-item">
-                <a href="#" class="nav-link">
-                    Culture
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-item">Craft Gallery</a>
-                    <a href="#" class="dropdown-item">Living Traditions</a>
-                    <a href="#" class="dropdown-item">Spiritual Spaces</a>
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Culture
+                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Craft Gallery</a>
+                        <a href="#" class="dropdown-item">Living Traditions</a>
+                        <a href="#" class="dropdown-item">Spiritual Spaces</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Taste & Celebrate -->
-            <div class="nav-item">
-                <a href="Dishes_Sw.html" class="nav-link">
-                    Taste &amp; Celebrate
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
-                    <a href="Festivals_Sw.html" class="dropdown-item">Jubilee Festivals</a>
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Taste &amp; Celebrate
+                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+                        <a href="Festivals_Sw.html" class="dropdown-item">Jubilee Festivals</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Plan Your Trip -->
-            <div class="nav-item">
-                <a href="#plan" class="nav-link">
-                    Plan Your Trip
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-item">Travel Essentials</a>
-                    <a href="#" class="dropdown-item">Expedition Itineraries</a>
-                    <a href="#" class="dropdown-item">Cultural Etiquette</a>
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Plan Your Trip
+                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Travel Essentials</a>
+                        <a href="#" class="dropdown-item">Expedition Itineraries</a>
+                        <a href="#" class="dropdown-item">Cultural Etiquette</a>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </nav>
 
 
-
-
-
-    /* _______________________________YOUR PAGE CONTENT GOES HERE_______________________________ */
-
-
+    <!-- ═══════════════════════════════════════════
+         YOUR PAGE CONTENT GOES HERE
+         Add <section> or other elements between the
+         nav above and the footer below.
+    ═══════════════════════════════════════════ -->
 
 
     <!-- ═══════════════ FOOTER ═══════════════ -->
@@ -313,9 +113,9 @@
 
             <!-- Brand -->
             <div class="footer-brand">
-                <a href="#" class="logo"
+                <a href="Homepage_Sw.html" class="logo"
                     style="display:flex;align-items:center;gap:10px;text-decoration:none;color:white;margin-bottom:16px;">
-                    <!-- Logo SVG -->
+                    <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
                     <span
                         style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.18em;color:white;">WARISAN
                         MALAYSIA</span>
@@ -382,8 +182,46 @@
         <div class="footer-bottom">
             &copy; 2026 All rights Reserved
         </div>
-
     </div>
+
+    <script>
+        /* ── Mobile Nav ────────────────────────── */
+        const navToggle = document.getElementById('navToggle');
+        const navLinksWrapper = document.getElementById('navLinks');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navToggle.classList.toggle('open');
+                navLinksWrapper.classList.toggle('open', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        }
+
+        document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+            link.addEventListener('click', e => {
+                if (window.innerWidth > 768) return;
+                const item = link.closest('.nav-item');
+                if (item && item.querySelector('.dropdown')) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+            }
+            if (!e.target.closest('.main-nav')) {
+                if (navToggle) {
+                    navToggle.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+                if (navLinksWrapper) navLinksWrapper.classList.remove('open');
+            }
+        });
+    </script>
+
 </body>
 
 </html>

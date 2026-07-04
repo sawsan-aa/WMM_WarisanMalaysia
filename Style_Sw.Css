@@ -13,7 +13,7 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: #FAF6F0;
+    background: linear-gradient(180deg, #FAF6F0 0%, #FAF6F0 10%, #ffffff 28%);
     color: #2A3A5C;
     overflow-x: hidden;
 }
@@ -23,7 +23,7 @@ body {
     --gold: #C9973A;
     --gold-lt: #E8B850;
     --maroon: #8B1A1A;
-    --navy: #1A2B4A;
+    --navy: #1b255e;
     --navy-lt: #2A3A5C;
     --beige: #FAF6F0;
     --gray: #6B7A90;
@@ -132,6 +132,12 @@ body {
     font-size: .82rem;
     letter-spacing: .18em;
     color: var(--white);
+}
+
+.logo-text.black {
+    margin-left: 6px;
+    color: #000;
+    font-size: .6rem;
 }
 
 .hero-img-icon {
@@ -245,11 +251,11 @@ body {
 }
 
 .nav-inner {
-    max-width: 960px;
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0;
     padding: 0 24px;
 }
@@ -304,6 +310,7 @@ section {
 }
 
 /* ─── About Section ──────────────────────────────────── */
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -311,9 +318,28 @@ section {
     align-items: center;
 }
 
+.about-image {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50% 0 50% 0;
+    box-shadow: 0 12px 40px rgba(201, 169, 129, 0.22);
+    position: relative;
+    filter: brightness(1.05);
+    justify-self: end;
+    object-fit: cover;
+}
+
 @media (max-width: 720px) {
     .about-grid {
         grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .about-image {
+        max-width: 260px;
+        justify-self: center;
+        order: -1;
     }
 }
 
@@ -332,6 +358,7 @@ section {
     font-weight: 400;
     color: var(--navy-lt);
     line-height: 1.85;
+    width: 100%;
 }
 
 .about-divider {
@@ -433,7 +460,7 @@ section {
 
 /* ─── Landmarks Section ──────────────────────────────── */
 .landmarks {
-    background: var(--beige);
+    background: #f9f8f6;
 }
 
 .section-header {
@@ -785,12 +812,15 @@ section {
     z-index: 200;
 }
 
-.nav-item:hover .dropdown,
-.nav-item:focus-within .dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto;
+@media (min-width: 769px) {
+
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+    }
 }
 
 /* Individual dropdown link */
@@ -816,4 +846,224 @@ section {
 
 .dropdown-item+.dropdown-item {
     border-top: 1px solid rgba(42, 58, 92, .07);
+}
+
+/* ─── Mobile Navigation Toggle ──────────────────── */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background .2s;
+    flex-shrink: 0;
+}
+
+.nav-toggle:hover {
+    background: rgba(42, 58, 92, .06);
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--navy-lt);
+    border-radius: 2px;
+    transition: all .3s ease;
+    transform-origin: center;
+}
+
+.nav-toggle.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex: 1;
+    justify-content: center;
+}
+
+/* ─── Responsive: Tablet / Mobile ───────────────── */
+@media (max-width: 768px) {
+
+    .nav-inner {
+        justify-content: space-between;
+        padding: 0 16px;
+        flex-wrap: wrap;
+        min-height: 52px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links-wrapper {
+        display: none;
+        width: 100%;
+        flex: none;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        border-top: 1px solid rgba(42, 58, 92, .08);
+        padding: 8px 0 12px;
+    }
+
+    .nav-links-wrapper.open {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 13px 16px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+
+    .nav-item:hover>.nav-link,
+    .nav-item:focus-within>.nav-link {
+        color: var(--navy-lt);
+    }
+
+    .dropdown {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border-top: none;
+        border-left: 3px solid var(--gold);
+        margin: 0 0 4px 28px;
+        min-width: auto;
+        opacity: 0;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s ease, opacity .22s ease, visibility .22s;
+        pointer-events: none;
+    }
+
+    .nav-item.open .dropdown {
+        opacity: 1;
+        visibility: visible;
+        max-height: 400px;
+        pointer-events: auto;
+    }
+
+    .about-grid {
+        gap: 40px;
+    }
+
+    .hero-topbar {
+        padding: 16px 20px 0;
+    }
+
+    section {
+        padding: 60px 16px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hero-content {
+        padding: 40px 16px 120px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 240px;
+        text-align: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-brand {
+        grid-column: auto;
+    }
+}
+
+/* ─── Nav Brand Logo ─────────────────────────────── */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    padding: 8px 20px 8px 0;
+}
+
+.nav-brand-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    filter: brightness(0);
+    transition: filter .25s;
+}
+
+
+/* ─── Button nav-link reset ──────────────────────── */
+button.nav-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ─── Hero topbar hibiscus icon ──────────────────── */
+.logo-hibiscus {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    flex-shrink: 0;
+}
+
+/* ─── Footer brand hibiscus icon ─────────────────── */
+.footer-logo-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    flex-shrink: 0;
 }
