@@ -798,12 +798,12 @@ section {
 /* Dropdown panel */
 .dropdown {
     position: absolute;
-    top: calc(100% + 15px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
     background: var(--white);
     box-shadow: 0 10px 36px rgba(26, 43, 74, .14), 0 2px 8px rgba(0, 0, 0, .06);
-    min-width: 212px;
+    min-width: 215px;
     border-top: 2px solid var(--gold);
     opacity: 0;
     visibility: hidden;
@@ -1037,7 +1037,7 @@ section {
     width: 25px;
     height: 25px;
     object-fit: contain;
-    filter: brightness(0);
+    filter: brightness(0.9);
     transition: filter .25s;
 }
 
