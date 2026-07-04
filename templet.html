@@ -9,6 +9,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     <link rel="stylesheet" href="Style_Sw.css">
 </head>
 
@@ -25,9 +26,7 @@
 
             <!-- Hamburger (mobile only) -->
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
             </button>
 
             <!-- Nav links -->
@@ -38,10 +37,7 @@
                 <div class="nav-item">
                     <button type="button" class="nav-link">
                         Discover
-                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown">
                         <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
@@ -53,10 +49,7 @@
                 <div class="nav-item">
                     <button type="button" class="nav-link">
                         Culture
-                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown">
                         <a href="#" class="dropdown-item">Craft Gallery</a>
@@ -68,10 +61,7 @@
                 <div class="nav-item">
                     <button type="button" class="nav-link">
                         Taste &amp; Celebrate
-                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown">
                         <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
@@ -82,10 +72,7 @@
                 <div class="nav-item">
                     <button type="button" class="nav-link">
                         Plan Your Trip
-                        <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown">
                         <a href="#" class="dropdown-item">Travel Essentials</a>
@@ -124,25 +111,13 @@
                     Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
                 <div class="footer-socials">
                     <div class="social-icon" title="Email">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <polyline points="2,4 12,13 22,4" />
-                        </svg>
+                        <i class="ph ph-envelope" aria-hidden="true"></i>
                     </div>
                     <div class="social-icon" title="Phone">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
+                        <i class="ph ph-phone" aria-hidden="true"></i>
                     </div>
                     <div class="social-icon" title="Location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
+                        <i class="ph ph-map-pin" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -188,12 +163,14 @@
         /* ── Mobile Nav ────────────────────────── */
         const navToggle = document.getElementById('navToggle');
         const navLinksWrapper = document.getElementById('navLinks');
+        const navMenuIcon = document.getElementById('navMenuIcon');
 
         if (navToggle) {
             navToggle.addEventListener('click', () => {
                 const isOpen = navToggle.classList.toggle('open');
                 navLinksWrapper.classList.toggle('open', isOpen);
                 navToggle.setAttribute('aria-expanded', String(isOpen));
+                if (navMenuIcon) navMenuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
             });
         }
 
@@ -216,6 +193,7 @@
                 if (navToggle) {
                     navToggle.classList.remove('open');
                     navToggle.setAttribute('aria-expanded', 'false');
+                    if (navMenuIcon) navMenuIcon.className = 'ph ph-list';
                 }
                 if (navLinksWrapper) navLinksWrapper.classList.remove('open');
             }
