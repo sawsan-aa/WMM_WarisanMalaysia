@@ -13,7 +13,7 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(180deg, #FAF6F0 0%, #FAF6F0 10%, #ffffff 28%);
+    background: linear-gradient(180deg, #ffedd5 0%, #FAF6F0 10%, #ffffff 28%);
     color: #2A3A5C;
     overflow-x: hidden;
 }

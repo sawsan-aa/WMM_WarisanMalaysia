@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cultural Dishes — Warisan Malaysia</title>
+    <title>Cultural Dishes | Warisan Malaysia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
@@ -41,12 +41,12 @@
         }
 
         .dishes-grid {
-            max-width: 850px;
+            max-width: 950px;
             margin: 2vw auto;
             display: grid;
             grid-template-columns: 1fr 1.15fr;
             gap: 60px;
-            align-items: start;
+            align-items: center;
         }
 
         /* ── Carousel Column ───────────────────────────── */
@@ -137,6 +137,7 @@
         .carousel-img-inner {
             width: 90%;
             height: 90%;
+            border: 1.5px solid rgba(142, 46, 46, 0.45);
             border-radius: 50%;
             background: #E4EAF4;
             display: flex;
@@ -208,6 +209,7 @@
             color: var(--gold);
             white-space: nowrap;
             flex-shrink: 0;
+            line-height: 0.1;
         }
 
         .tagline-line {
@@ -297,54 +299,74 @@
             margin-bottom: 24px;
         }
 
-        /* Gallery row */
+        /* Gallery row - expandable panels */
         .gallery-row {
             display: flex;
-            gap: 14px;
-            align-items: flex-end;
+            gap: 10px;
+            height: 310px;
+            overflow: hidden;
         }
 
         .gallery-card {
-            border-radius: 10px;
-            background: #E4EAF4;
+            flex: 1;
             overflow: hidden;
+            border-radius: 10px;
             cursor: pointer;
-            flex-shrink: 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: flex 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 44px;
+            position: relative;
         }
 
         .gallery-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(42, 58, 92, 0.14);
+            flex: 2;
         }
 
-        .gallery-card-img {
+        .gallery-card img {
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(42, 58, 92, 0.3);
+            object-fit: cover;
+            display: block;
+            transition: transform 0.45s ease;
         }
 
-        .gc-lg {
-            width: 200px;
-            height: 220px;
+        .gallery-card:hover img {
+            transform: scale(1.06);
         }
 
-        .gc-md {
-            width: 175px;
-            height: 185px;
+        /* ── Ingredient overlay ────────────────────────── */
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(8, 10, 24, 0.92), rgba(8, 10, 24, 0.55) 75%, transparent);
+            padding: 22px 16px 16px;
+            transform: translateY(100%);
+            transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
         }
 
-        .gc-sm {
-            width: 140px;
-            height: 155px;
+        .gallery-card:hover .gallery-overlay {
+            transform: translateY(0);
         }
 
-        .gc-xs {
-            width: 120px;
-            height: 135px;
+        .gallery-overlay-title {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.6rem;
+            font-weight: bolder;
+            letter-spacing: 0.2em;
+            color: var(--gold-lt);
+            text-transform: uppercase;
+            margin: 0 0 6px;
+        }
+
+        .gallery-overlay-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: bolder;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.4;
+            margin: 0;
         }
 
         /* ── Responsive ────────────────────────────────── */
@@ -363,16 +385,11 @@
             }
 
             .gallery-row {
-                flex-wrap: wrap;
-                justify-content: center;
+                height: 340px;
             }
 
-            .gc-lg,
-            .gc-md,
-            .gc-sm,
-            .gc-xs {
-                width: 140px;
-                height: 140px;
+            .gallery-card {
+                min-width: 30px;
             }
         }
 
@@ -514,29 +531,25 @@
                 </div>
 
                 <p class="dish-desc" id="dishDesc">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
-                    labore et dolore magna aliqua. Quis ipsum suspendisse labore et dolore magna aliqua.
+                    Nasi Lemak is Malaysia's undisputed national dish, a morning staple eaten from seaside kampungs to city towers. Fragrant rice is slow-cooked in coconut milk and pandan leaf until each grain absorbs a gentle sweetness, then paired with fiery sambal, crispy anchovies, roasted peanuts, and a half-boiled egg wrapped in banana leaf.
                 </p>
 
                 <div class="dish-info-grid">
                     <div>
                         <p class="dish-info-label">Core Elements :</p>
                         <ul class="dish-elements-list" id="dishElements">
-                            <li>Lorem ipsum dolor sit</li>
-                            <li>amet, consectetur adipiscing</li>
-                            <li>elit, sed do eiusmod tempor</li>
-                            <li>incididunt ut labore</li>
-                            <li>et dolore magna aliqua.</li>
-                            <li>Quis ipsum suspendisse</li>
+                            <li>Pandan-scented coconut rice</li>
+                            <li>Crispy ikan bilis</li>
+                            <li>Roasted groundnuts</li>
+                            <li>Half-boiled egg</li>
+                            <li>Cucumber slices</li>
+                            <li>Fiery sambal paste</li>
                         </ul>
                     </div>
                     <div>
                         <p class="dish-info-label">History Notes :</p>
                         <p class="dish-history-text" id="dishHistory">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum
-                            suspendisse Quis ipsum Quis ipsum suspendisse
+                            Its origins trace to the rice-farming communities of rural Selangor and Negeri Sembilan, where coconut milk preserved rice through humid tropical nights. Sold in banana leaf parcels before dawn, it once sustained fishermen and labourers across the peninsula before becoming the nation's favourite morning ritual.
                         </p>
                     </div>
                 </div>
@@ -549,35 +562,51 @@
     <!-- ═══════════════ FEATURED SECTION ═══════════════ -->
     <div class="featured-section">
         <div class="featured-inner">
-            <h3 class="featured-heading" id="featuredHeading">THE BOTANICAL BENTO BOX</h3>
-            <p class="featured-sub" id="featuredSub">An Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            </p>
+            <h3 class="featured-heading">TRADITIONAL INGREDIENTS</h3>
+            <p class="featured-sub">The essential aromatics and spices that define Malaysian cuisine across all
+                communities</p>
             <hr class="featured-divider">
 
             <div class="gallery-row">
-                <div class="gallery-card gc-md">
-                    <div class="gallery-card-img">
-                        <i class="ph ph-image" style="font-size:30px;"></i>
+                <div class="gallery-card">
+                    <img src="Assets/ingredients/Dried-Anchovies.jpg" alt="Dried Anchovies">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">Dried Anchovies</h4>
+                        <p class="gallery-overlay-desc">Sun-dried silvery fish fried crisp and salted, the signature
+                            crunch atop Nasi Lemak and a base for rich Malaysian stocks.</p>
                     </div>
                 </div>
-                <div class="gallery-card gc-lg">
-                    <div class="gallery-card-img">
-                        <i class="ph ph-image" style="font-size:34px;"></i>
+                <div class="gallery-card">
+                    <img src="Assets/ingredients/Kaffir-lime-leaves.jpg" alt="Kaffir Lime Leaves">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">Kaffir Lime Leaves</h4>
+                        <p class="gallery-overlay-desc">Aromatic double leaves whose citrus fragrance lifts curries,
+                            laksa broths, and rempah pastes.</p>
                     </div>
                 </div>
-                <div class="gallery-card gc-sm">
-                    <div class="gallery-card-img">
-                        <i class="ph ph-image" style="font-size:26px;"></i>
+                <div class="gallery-card">
+                    <img src="Assets/ingredients/lemongrass.jpeg" alt="Lemongrass">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">Lemongrass</h4>
+                        <p class="gallery-overlay-desc">The stalk that anchors Malaysian rempah, bruised and
+                            slow-cooked to release a floral citrus warmth found in rendang, laksa, and satay marinades.
+                        </p>
                     </div>
                 </div>
-                <div class="gallery-card gc-xs">
-                    <div class="gallery-card-img">
-                        <i class="ph ph-image" style="font-size:22px;"></i>
+                <div class="gallery-card">
+                    <img src="Assets/ingredients/pandan.jpg" alt="Pandan">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">Pandan</h4>
+                        <p class="gallery-overlay-desc">Called the vanilla of Southeast Asia, pandan leaves perfume
+                            coconut rice, kuih desserts, and steamed cakes with a sweet, grassy aroma.</p>
                     </div>
                 </div>
-                <div class="gallery-card gc-sm">
-                    <div class="gallery-card-img">
-                        <i class="ph ph-image" style="font-size:26px;"></i>
+                <div class="gallery-card">
+                    <img src="Assets/ingredients/sambal.jpg" alt="Sambal">
+                    <div class="gallery-overlay">
+                        <h4 class="gallery-overlay-title">Sambal</h4>
+                        <p class="gallery-overlay-desc">A fiery chilli paste ground with belacan, shallots, and lime..
+                            the bold, umami-rich condiment that unifies every table from Kedah to Sabah.</p>
                     </div>
                 </div>
             </div>
@@ -661,9 +690,10 @@
                 region: 'PENINSULAR REGION',
                 name: 'FRAGRANT NASI LEMAK',
                 tagline: '"Where the Empire Began"',
-                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse labore et dolore magna aliqua. Quis ipsum suspendisse labore et dolore magna aliqua.',
+                img: 'Assets/nasi-lemak.png',
+                desc: "Nasi Lemak is Malaysia's undisputed national dish, a morning staple eaten from seaside kampungs to city towers. Fragrant rice is slow-cooked in coconut milk and pandan leaf until each grain absorbs a gentle sweetness, then paired with fiery sambal, crispy anchovies, roasted peanuts, and a half-boiled egg wrapped in banana leaf.",
                 elements: ['Pandan-scented coconut rice', 'Crispy ikan bilis', 'Roasted groundnuts', 'Half-boiled egg', 'Cucumber slices', 'Fiery sambal paste'],
-                history: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse Quis ipsum Quis ipsum suspendisse',
+                history: "Its origins trace to the rice-farming communities of rural Selangor and Negeri Sembilan, where coconut milk preserved rice through humid tropical nights. Sold in banana leaf parcels before dawn, it once sustained fishermen and labourers across the peninsula before becoming the nation's favourite morning ritual.",
                 featured: 'THE BOTANICAL BENTO BOX',
                 featuredSub: 'An Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
             },
@@ -671,9 +701,10 @@
                 region: 'PENINSULAR REGION',
                 name: 'RENDANG TOK',
                 tagline: '"The Warrior\'s Feast"',
-                desc: 'Rendang Tok is the slow-cooked dry rendang of the Perak royal court, simmered for hours until the coconut milk caramelises into a rich, dark crust. Each village guard the recipe jealously across generations.',
+                img: 'Assets/rendang-tok.jpg',
+                desc: 'Rendang Tok is the slow-cooked dry rendang of the Perak royal court, simmered for hours until the coconut milk caramelises into a rich, dark crust. Each village guards the recipe jealously across generations.',
                 elements: ['Grass-fed beef short ribs', 'Kerisik toasted coconut', 'Lemongrass stalks', 'Galangal root', 'Dried chillies', 'Turmeric leaf'],
-                history: 'Originating from the Perak royal household in the 18th century, Rendang Tok was served exclusively at royal banquets. Its preservation method — cooking until bone-dry — allowed it to last weeks on military campaigns.',
+                history: 'Originating from the Perak royal household in the 18th century, Rendang Tok was served exclusively at royal banquets. Its preservation method, cooking until bone-dry, allowed it to last weeks on military campaigns.',
                 featured: 'THE RENDANG TOK CEREMONY',
                 featuredSub: 'A slow-cook ritual passed down through the Perak royal kitchen',
             },
@@ -681,7 +712,8 @@
                 region: 'PENANG HERITAGE',
                 name: 'CHAR KWAY TEOW',
                 tagline: '"Smoke and Memory"',
-                desc: 'Char Kway Teow is the celebrated wok-fried flat noodle of Penang, cooked at blistering heat over charcoal flame to achieve the elusive wok hei — the smoky breath of a well-seasoned iron wok.',
+                img: 'Assets/CHAR KWAY TEOW.jpg',
+                desc: 'Char Kway Teow is the celebrated wok-fried flat noodle of Penang, cooked at blistering heat over charcoal flame to achieve the elusive wok hei, the smoky breath of a well-seasoned iron wok.',
                 elements: ['Flat rice noodles', 'Fresh cockles', 'Chinese sausage', 'Bean sprouts', 'Egg', 'Dark soy sauce'],
                 history: 'The dish traces back to Penang\'s Chinese immigrant labourers in the 19th century, who needed a cheap, high-calorie meal to sustain their work at the docks and paddy fields of Seberang Perai.',
                 featured: 'THE PENANG NIGHT HAWKER TRAIL',
@@ -691,6 +723,7 @@
                 region: 'BORNEAN HERITAGE',
                 name: 'LAKSA SARAWAK',
                 tagline: '"The River Spice Road"',
+                img: 'Assets/LAKSA SARAWAK.jpg',
                 desc: 'Laksa Sarawak is built on a complex rempah paste of sambal belacan, lemongrass, and galangal, diluted with fresh coconut milk and served with vermicelli, poached prawns, and shredded omelette.',
                 elements: ['Fresh rice vermicelli', 'Tiger prawns', 'Coconut milk broth', 'Belacan sambal', 'Calamansi lime', 'Fresh coriander'],
                 history: 'The recipe arrived with Malay spice traders navigating the Sarawak River delta in the 15th century. Dayak communities adapted the paste with local jungle herbs, creating a distinctly Bornean character unlike any other Malaysian laksa.',
@@ -698,14 +731,15 @@
                 featuredSub: 'Where traders have bartered spices since the 15th century',
             },
             {
-                region: 'CHINESE HERITAGE',
-                name: 'BAK KUT TEH',
-                tagline: '"The Herbal Elixir"',
-                desc: 'Bak Kut Teh — pork bone tea — is a Hokkien herbal broth simmered for hours with garlic, star anise, cloves, and dried mushrooms. The Malaysian version tends toward a lighter, peppery clarity compared to its Singaporean counterpart.',
-                elements: ['Pork ribs & belly', 'Dried shiitake mushrooms', 'Tofu puffs', 'Garlic bulbs', 'White pepper', 'Chinese herbs'],
-                history: 'Introduced by Hokkien immigrants in the port towns of Klang and Butterworth in the early 20th century, Bak Kut Teh was originally a restorative morning meal for coolies, served alongside fragrant jasmine rice and strong Chinese tea.',
-                featured: 'THE KLANG VALLEY BROTH TRAIL',
-                featuredSub: 'A century of simmering traditions along the old port district',
+                region: 'INDIAN HERITAGE',
+                name: 'ROTI CANAI',
+                tagline: '"The Morning Staple"',
+                img: 'Assets/Roti-Canai.jpg',
+                desc: 'Roti Canai is the flaky, layered flatbread born from South Indian culinary tradition and perfected in the mamak stalls of Malaysia. Spun and stretched by hand until paper-thin, it is griddled in ghee to a golden, crispy outside with a pillowy interior.',
+                elements: ['Plain flour dough', 'Clarified ghee butter', 'Dal curry dip', 'Fish curry', 'Condensed milk (for dessert)', 'Crispy onion flakes'],
+                history: 'Brought to Malaysia by Tamil Muslim traders in the 19th century, Roti Canai became the soul of the mamak culture, open-air stalls that fuse Indian and Malay culinary traditions into a 24-hour street food institution beloved by all Malaysians.',
+                featured: 'THE MAMAK STALL CULTURE',
+                featuredSub: 'Where all Malaysians gather, from dusk to the first prayer call',
             },
         ];
 
@@ -720,8 +754,6 @@
         const dishDesc = document.getElementById('dishDesc');
         const dishElements = document.getElementById('dishElements');
         const dishHistory = document.getElementById('dishHistory');
-        const featuredHeading = document.getElementById('featuredHeading');
-        const featuredSub = document.getElementById('featuredSub');
         const dotTrack = document.getElementById('dotTrack');
         const imgInner = document.getElementById('dishImgInner');
 
@@ -753,8 +785,7 @@
                 dishTagline.textContent = d.tagline;
                 dishDesc.textContent = d.desc;
                 dishHistory.textContent = d.history;
-                featuredHeading.textContent = d.featured;
-                featuredSub.textContent = d.featuredSub;
+                document.getElementById('dishImg').src = d.img;
 
                 dishElements.innerHTML = d.elements.map(el => `<li>${el}</li>`).join('');
 

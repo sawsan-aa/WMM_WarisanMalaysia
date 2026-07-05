@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cities of Heritage — Warisan Malaysia</title>
+    <title>Cities of Heritage | Warisan Malaysia</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
@@ -185,25 +185,85 @@
             background: #E2E4EE;
             border-radius: 3px;
             margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
-        .city-img-wrap svg {
-            opacity: .28;
+        .city-slide {
+            position: absolute;
+            inset: 0;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .city-img-wrap img {
+        .city-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
+            display: block;
         }
 
-        .city-img-wrap img.loaded {
-            display: block;
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(8, 10, 24, 0.45);
+            border: none;
+            color: rgba(255, 255, 255, 0.92);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.22s ease, background 0.18s ease;
+            z-index: 3;
+            font-size: 13px;
+            padding: 0;
+        }
+
+        .city-img-wrap:hover .slider-arrow {
+            opacity: 1;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(8, 10, 24, 0.75);
+        }
+
+        .slider-arrow.hidden {
+            opacity: 0 !important;
+            pointer-events: none;
+        }
+
+        .slider-arrow-prev {
+            left: 8px;
+        }
+
+        .slider-arrow-next {
+            right: 8px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 3;
+        }
+
+        .slider-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: background 0.2s;
+        }
+
+        .slider-dot.active {
+            background: white;
         }
 
         .city-desc {
@@ -457,9 +517,15 @@
                         <div class="tagline-line"></div>
                     </div>
 
-                    <!-- Image placeholder -->
+                    <!-- City image slider -->
                     <div class="city-img-wrap" id="cityImgWrap">
-                        <i class="ph ph-image" aria-hidden="true" style="font-size:48px;opacity:.28;color:#aaa;"></i>
+                        <button class="slider-arrow slider-arrow-prev" id="sliderPrev" aria-label="Previous image">
+                            <i class="ph ph-caret-left" aria-hidden="true"></i>
+                        </button>
+                        <button class="slider-arrow slider-arrow-next" id="sliderNext" aria-label="Next image">
+                            <i class="ph ph-caret-right" aria-hidden="true"></i>
+                        </button>
+                        <div class="slider-dots" id="sliderDots"></div>
                     </div>
 
                     <p class="city-desc" id="cityDesc">
@@ -482,8 +548,7 @@
                         <div>
                             <div class="city-meta-label">CULINARY SIGNATURE :</div>
                             <p class="city-meta-text" id="cityCulinary">
-                                Nyonya cuisine is the city's soul — asam pedas fish, chicken kapitan, and
-                                the iconic cendol crowned with gula Melaka palm sugar syrup.
+                                Nyonya cuisine is the city's soul: asam pedas fish, chicken kapitan, and the iconic cendol crowned with gula Melaka palm sugar syrup.
                             </p>
                         </div>
                     </div>
@@ -570,7 +635,8 @@
                 tagline: '"Where the Empire Began"',
                 desc: "Once the crown of a flourishing maritime empire, Melaka's storied straits drew Portuguese, Dutch, and British fleets across four centuries. Its UNESCO old town preserves a rare layering of Malay sultanate grandeur, European colonial forts, and vibrant Peranakan shophouses.",
                 history: "Founded circa 1400 by Parameswara, Melaka grew into the greatest entrepôt of the medieval Asian world, controlling spice routes linking India to China.",
-                culinary: "Nyonya cuisine is the city's soul — asam pedas fish, chicken kapitan, and the iconic cendol crowned with gula Melaka palm sugar syrup.",
+                culinary: "Nyonya cuisine is the city's soul: asam pedas fish, chicken kapitan, and the iconic cendol crowned with gula Melaka palm sugar syrup.",
+                imgs: ['Assets/cities/Melaka-town.jpg', 'Assets/cities/Melaka-town1.jpg', 'Assets/cities/Melaka-town2.jpg', 'Assets/cities/Melaka-town3.jpg', 'Assets/cities/Melaka-town5.jpg', 'Assets/cities/Melaka-town6.jpg'],
             },
             penang: {
                 region: 'PENINSULAR REGION',
@@ -578,7 +644,8 @@
                 tagline: '"Pearl of the Orient"',
                 desc: "George Town's UNESCO heritage core is a living museum of Straits Chinese mansions, British colonial arcades, and Tamil Hindu temples side by side. Street art, hawker lanes, and clan jetties make it Malaysia's most vibrant cultural mosaic.",
                 history: "Ceded to the British East India Company in 1786 by the Sultan of Kedah, Penang became Britain's first foothold in Southeast Asia and a vital regional trading port.",
-                culinary: "Acclaimed as the hawker food capital — char kway teow, Penang laksa, Hokkien mee, and rojak with prawn paste are the enduring icons.",
+                culinary: "Acclaimed as the hawker food capital, char kway teow, Penang laksa, Hokkien mee, and rojak with prawn paste are the enduring icons.",
+                imgs: ['Assets/cities/penang.jpg', 'Assets/cities/penang1.jpg', 'Assets/cities/penang2.jpg', 'Assets/cities/penang3.jpg', 'Assets/cities/penang4.jpg', 'Assets/cities/penang6.jpg'],
             },
             kl: {
                 region: 'PENINSULAR REGION',
@@ -587,6 +654,7 @@
                 desc: "Born at the muddy junction of two rivers, Kuala Lumpur rose from a tin miners' camp to a global metropolis crowned by the Petronas Twin Towers. Merdeka Square, Batu Caves, and Petaling Street trace its remarkable climb from jungle to skyline.",
                 history: "Founded around 1857 by Malay chiefs and Chinese miners, KL was declared Federal Capital in 1895 and transformed by tin wealth and British colonial planning.",
                 culinary: "Bak kut teh, nasi lemak bungkus, and Jalan Imbi dim sum define a city where every ethnicity's finest street food competes along the same five-foot way.",
+                imgs: ['Assets/cities/KualaLumpor.jpg', 'Assets/cities/KualaLumpor1.jpg', 'Assets/cities/KualaLumpor2.jpg', 'Assets/cities/KualaLumpor3.jpg', 'Assets/cities/KualaLumpor4.jpg', 'Assets/cities/KualaLumpor5.jpg', 'Assets/cities/KualaLumpor6.jpg', 'Assets/cities/KualaLumpor7.jpg', 'Assets/cities/KualaLumpor8.jpg',],
             },
             jb: {
                 region: 'PENINSULAR REGION',
@@ -595,28 +663,74 @@
                 desc: "Perched at the southernmost tip of the Malay Peninsula, Johor Bahru is a city of royal palaces and sultanic grandeur. The Istana Besar, Abu Bakar Mosque, and the old Chinese quarter reflect a layered heritage shaped by the Johor Sultanate and Straits trade.",
                 history: "Established as the Johor Sultanate's capital in 1855 by Temenggong Daeng Ibrahim, JB grew rapidly as the final anchor port before Singapore at the tip of the peninsula.",
                 culinary: "Mee rebus Johor, lontong, and the signature otak-otak fish cake grilled in banana leaf draw food seekers from across the causeway.",
+                imgs: ['Assets/cities/Johor-bahru.jpg', 'Assets/cities/Johor-bahru1.jpg', 'Assets/cities/Johor-bahru2.jpg'],
             },
             kuching: {
-                region: 'EAST MALAYSIA — SARAWAK',
+                region: 'EAST MALAYSIA, SARAWAK',
                 name: 'KUCHING CITY',
                 tagline: '"City of Cats"',
                 desc: "Straddling the Sarawak River, Kuching blends a Rajah Brooke–era waterfront, colourful Chinese temples, and the rich longhouse cultures of the Iban, Bidayuh, and Orang Ulu peoples into one of Borneo's most walkable heritage cities.",
                 history: "Ruled by the White Rajahs of the Brooke dynasty from 1841 to 1946, Kuching's colonial courthouse, fort, and museum quarter survive intact along the river.",
-                culinary: "Sarawak laksa — hailed as the breakfast of the gods — shares the table with umai fish ceviche and the famous three-layer milk tea.",
+                culinary: "Sarawak laksa, hailed as the breakfast of the gods, shares the table with umai fish ceviche and the famous three-layer milk tea.",
+                imgs: ['Assets/cities/KUCHING CITY.jpg', 'Assets/cities/KUCHING CITY1.jpg', 'Assets/cities/KUCHING CITY2.jpg'],
             },
             kk: {
-                region: 'EAST MALAYSIA — SABAH',
+                region: 'EAST MALAYSIA, SABAH',
                 name: 'KOTA KINABALU',
                 tagline: '"Gateway to Borneo\'s Roof"',
-                desc: "Rebuilt after WWII on the shores of the Sulu Sea, KK pairs a lively waterfront night market with Mount Kinabalu's UNESCO World Heritage park — the highest peak between the Himalayas and New Guinea — just two hours inland.",
+                desc: "Rebuilt after WWII on the shores of the Sulu Sea, KK pairs a lively waterfront night market with Mount Kinabalu's UNESCO World Heritage park, the highest peak between the Himalayas and New Guinea, just two hours inland.",
                 history: "Originally Jesselton, a British North Borneo Chartered Company port, the city was rebuilt as the Sabah state capital after the destruction of WWII.",
-                culinary: "Fresh seafood — butter prawns, steamed lapu-lapu grouper, and hinava fish salad spiced with calamansi and bird's eye chilli — defines KK's prized waterfront.",
+                culinary: "Fresh seafood defines KK's prized waterfront: butter prawns, steamed lapu-lapu grouper, and hinava fish salad spiced with calamansi and bird's eye chilli.",
+                imgs: ['Assets/cities/KOTA KINABALU.jpg', 'Assets/cities/KOTA KINABALU1.jpg', 'Assets/cities/KOTA KINABALU2.jpg'],
             },
         };
 
         /* ── Panel update ───────────────────────────────── */
         let activeCity = 'melaka';
         const panel = document.getElementById('cityPanel');
+
+        /* ── Slider ─────────────────────────────────────── */
+        let sliderIdx = 0;
+        let sliderImgs = [];
+        const cityImgWrap = document.getElementById('cityImgWrap');
+        const sliderPrev = document.getElementById('sliderPrev');
+        const sliderNext = document.getElementById('sliderNext');
+        const sliderDotsEl = document.getElementById('sliderDots');
+
+        function buildSlider(imgs) {
+            sliderIdx = 0;
+            sliderImgs = imgs;
+            cityImgWrap.querySelectorAll('.city-slide').forEach(s => s.remove());
+            imgs.forEach((src, i) => {
+                const slide = document.createElement('div');
+                slide.className = 'city-slide';
+                slide.style.transform = `translateX(${i * 100}%)`;
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = '';
+                slide.appendChild(img);
+                cityImgWrap.insertBefore(slide, sliderPrev);
+            });
+            sliderDotsEl.innerHTML = imgs.map((_, i) =>
+                `<div class="slider-dot${i === 0 ? ' active' : ''}"></div>`
+            ).join('');
+            updateSliderArrows();
+        }
+
+        function goSlide(dir) {
+            const total = sliderImgs.length;
+            sliderIdx = Math.max(0, Math.min(total - 1, sliderIdx + dir));
+            cityImgWrap.querySelectorAll('.city-slide').forEach((slide, i) => {
+                slide.style.transform = `translateX(${(i - sliderIdx) * 100}%)`;
+            });
+            sliderDotsEl.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === sliderIdx));
+            updateSliderArrows();
+        }
+
+        function updateSliderArrows() {
+            sliderPrev.classList.toggle('hidden', sliderIdx === 0);
+            sliderNext.classList.toggle('hidden', sliderIdx === sliderImgs.length - 1);
+        }
 
         function setCity(id) {
             if (id === activeCity) return;
@@ -634,6 +748,8 @@
                 document.getElementById('cityHistory').textContent = c.history;
                 document.getElementById('cityCulinary').textContent = c.culinary;
 
+                buildSlider(c.imgs);
+
                 /* Update active pin */
                 document.querySelectorAll('.map-pin').forEach(p => p.classList.remove('active'));
                 document.querySelector(`.map-pin[data-city="${id}"]`)?.classList.add('active');
@@ -647,6 +763,11 @@
         document.querySelectorAll('.map-pin').forEach(pin => {
             pin.addEventListener('click', () => setCity(pin.dataset.city));
         });
+
+        sliderPrev.addEventListener('click', () => goSlide(-1));
+        sliderNext.addEventListener('click', () => goSlide(1));
+
+        buildSlider(CITIES['melaka'].imgs);
 
         /* ── Mobile Nav ─────────────────────────────────── */
         const navToggle = document.getElementById('navToggle');
