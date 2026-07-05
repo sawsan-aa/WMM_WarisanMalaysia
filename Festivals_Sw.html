@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festivals & Seasons | Warisan Malaysia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="Style_Sw.css">
+    <style>
+        /* ── Page-level override ─────────────────────────── */
+        body {
+            background: #5C0E0E;
+        }
+
+        /* ── Festival Page Header ───────────────────────── */
+        .fest-header {
+            background: linear-gradient(160deg, #191e54 0%, #303585 55%, #1f1960 100%);
+            text-align: center;
+            padding: 88px 24px 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fest-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .fest-eyebrow,
+        .fest-page-title,
+        .fest-header-sub {
+            position: relative;
+            z-index: 1;
+        }
+
+        .fest-eyebrow {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.34em;
+            color: #E8B850;
+            margin-bottom: 18px;
+        }
+
+        .fest-page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 6vw, 3.2rem);
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            color: #ffffff;
+            margin-bottom: 22px;
+            line-height: 1.1;
+        }
+
+        .fest-header-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: #E8B850;
+            line-height: 2.2;
+        }
+
+        /* ── Tab Bar ─────────────────────────────────────── */
+        .fest-tabs {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            background-color: #5C0E0E;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            transition: background-color 0.55s ease;
+        }
+
+        .fest-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .fest-tab {
+            flex: 1;
+            min-width: max-content;
+            padding: 18px 26px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.67rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.42);
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: color 0.25s, border-color 0.25s;
+            white-space: nowrap;
+        }
+
+        .fest-tab:hover {
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .fest-tab.active {
+            color: #E8B850;
+            border-bottom-color: #C9973A;
+        }
+
+        /* ── Festival Stage ──────────────────────────────── */
+        .fest-stage {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            min-height: 520px;
+            padding: 88px 80px 88px 100px;
+            overflow: hidden;
+            background-color: #782020;
+            transition: background-color 0.6s ease;
+        }
+
+        /* Decorative watermark */
+        .fest-watermark {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.07;
+            filter: grayscale(1) brightness(1.8);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ── Diamond ─────────────────────────────────────── */
+        .fest-diamond-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fest-diamond {
+            width: 256px;
+            height: 256px;
+            border: 2px dashed #C9973A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: rgba(80, 8, 8, 0.35);
+            will-change: transform;
+        }
+
+        .fest-diamond::before {
+            content: '';
+            position: absolute;
+            inset: 11px;
+            border: 1px dashed rgba(201, 151, 58, 0.32);
+            pointer-events: none;
+        }
+
+        .fest-diamond-inner {
+            text-align: center;
+            padding: 20px;
+            will-change: transform;
+        }
+
+        .fest-d-label {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.57rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            color: rgba(255, 255, 255, 0.52);
+            margin-bottom: 12px;
+        }
+
+        .fest-d-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: #ffffff;
+            line-height: 1.38;
+            margin-bottom: 14px;
+            white-space: pre-line;
+        }
+
+        .fest-d-date {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.57rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            color: #E8B850;
+        }
+
+        /* ── Festival Details Panel ──────────────────────── */
+        .fest-details {
+            position: relative;
+            z-index: 1;
+            padding-left: 64px;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .fest-d-period {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            color: #E8B850;
+            margin-bottom: 12px;
+        }
+
+        .fest-d-main-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.9rem, 4vw, 2.9rem);
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            line-height: 1.12;
+            margin-bottom: 24px;
+        }
+
+        .fest-hr {
+            border: none;
+            border-top: 1.5px solid rgba(201, 151, 58, 0.45);
+            width: 112px;
+            margin: 0 0 22px 0;
+            transition: border-color 0.5s;
+        }
+
+        .fest-d-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.88;
+            margin-bottom: 22px;
+            max-width: 460px;
+        }
+
+        .fest-symbolism-lbl {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: #E8B850;
+            margin-bottom: 6px;
+        }
+
+        .fest-symbolism-val {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.83rem;
+            color: rgba(255, 255, 255, 0.78);
+            letter-spacing: 0.02em;
+        }
+
+        /* ── Responsive ──────────────────────────────────── */
+        @media (max-width: 820px) {
+            .fest-stage {
+                grid-template-columns: 1fr;
+                padding: 64px 24px;
+                gap: 52px;
+            }
+
+            .fest-details {
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .fest-hr {
+                margin: 0 auto 22px;
+            }
+
+            .fest-d-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fest-diamond {
+                width: 196px;
+                height: 196px;
+            }
+
+            .fest-d-name {
+                font-size: 0.8rem;
+            }
+
+            .fest-tab {
+                padding: 14px 16px;
+                font-size: 0.61rem;
+            }
+
+            .fest-header {
+                padding: 64px 16px 48px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════ NAV ═══════════════ -->
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-inner">
+
+            <!-- Brand -->
+            <a href="Homepage_Sw.html" class="nav-brand">
+                <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+            </a>
+
+            <!-- Hamburger (mobile only) -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
+            </button>
+
+            <!-- Nav links -->
+            <div class="nav-links-wrapper" id="navLinks">
+
+                <a href="Homepage_Sw.html" class="nav-link">Home</a>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Discover
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+                        <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
+                        <a href="#" class="dropdown-item">Hidden Gems</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Culture
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Craft Gallery</a>
+                        <a href="#" class="dropdown-item">Living Traditions</a>
+                        <a href="#" class="dropdown-item">Spiritual Spaces</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link active">
+                        Taste &amp; Celebrate
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+                        <a href="Festivals_Sw.html" class="dropdown-item">Jubilee Festivals</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Plan Your Trip
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Travel Essentials</a>
+                        <a href="#" class="dropdown-item">Expedition Itineraries</a>
+                        <a href="#" class="dropdown-item">Cultural Etiquette</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ FESTIVAL HEADER ═══════════════ -->
+    <section class="fest-header">
+        <canvas class="fest-stars" id="festStars"></canvas>
+        <p class="fest-eyebrow">CELEBRATING MALAYSIA'S LIVING CULTURE</p>
+        <h1 class="fest-page-title">FESTIVALS &amp; SEASONS</h1>
+        <p class="fest-header-sub">From the lantern-lit streets of Chinese New Year to the sacred feasts of Hari
+            Raya,<br>every season in Malaysia tells a story of belonging</p>
+    </section>
+
+    <!-- ═══════════════ TAB BAR ═══════════════ -->
+    <div class="fest-tabs" id="festTabs">
+        <button class="fest-tab active" data-idx="0">JAN – FEB – CHINESE</button>
+        <button class="fest-tab" data-idx="1">SYWAL LUNAR MONTH – HARI</button>
+        <button class="fest-tab" data-idx="2">OCTOBER – NOVEMBER – DEEPAVALI</button>
+        <button class="fest-tab" data-idx="3">1ST OF JUNE – GAWAI</button>
+    </div>
+
+    <!-- ═══════════════ FESTIVAL STAGE ═══════════════ -->
+    <div class="fest-stage" id="festStage">
+
+        <img src="Assets/festivals/chineseNY.jpg" alt="" class="fest-watermark" id="festWatermark" draggable="false">
+
+        <!-- Diamond -->
+        <div class="fest-diamond-wrap">
+            <div class="fest-diamond" id="festDiamond">
+                <div class="fest-diamond-inner" id="festDiamondInner">
+                    <p class="fest-d-label" id="fdLabel">FESTIVAL</p>
+                    <p class="fest-d-name" id="fdName">CHINESE NEW YEAR</p>
+                    <p class="fest-d-date" id="fdDate">JAN – FEB</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="fest-details" id="festDetails">
+            <p class="fest-d-period" id="fdPeriod">JANUARY TO FEBRUARY</p>
+            <h2 class="fest-d-main-name" id="fdMainName">CHINESE NEW YEAR</h2>
+            <hr class="fest-hr" id="festHr1">
+            <p class="fest-d-desc" id="fdDesc">Chinese New Year fills Malaysia's streets and shophouses with two weeks
+                of gilded lanterns, lion dance processions, and the thunder of firecrackers. Families gather for reunion
+                dinners laden with symbolic dishes, while red envelopes pass between generations in a ritual of
+                gratitude and blessing that stretches back centuries across the peninsula's Straits Chinese and Hokkien
+                communities.</p>
+            <hr class="fest-hr" id="festHr2">
+            <p class="fest-symbolism-lbl" id="fdSymLbl">FEATURED SYMBOLISM :</p>
+            <p class="fest-symbolism-val" id="fdSymbolism">Double fish red packets &amp; red hanging lanterns</p>
+        </div>
+
+    </div>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <div class="footer">
+        <img src="Assets/hibiscus.png" alt="" class="footer-hibiscus" draggable="false">
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <a href="Homepage_Sw.html" class="logo"
+                    style="display:flex;align-items:center;gap:10px;text-decoration:none;color:white;margin-bottom:16px;">
+                    <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
+                    <span
+                        style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.18em;color:white;">WARISAN
+                        MALAYSIA</span>
+                </a>
+                <p class="footer-desc">An award-winning editorial journal tracing the majestic, living synthesis of
+                    Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
+                <div class="footer-socials">
+                    <div class="social-icon" title="Email">
+                        <i class="ph ph-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="social-icon" title="Phone">
+                        <i class="ph ph-phone" aria-hidden="true"></i>
+                    </div>
+                    <div class="social-icon" title="Location">
+                        <i class="ph ph-map-pin" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="footer-col-title">DISCOVER</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Cities Archive</a></li>
+                    <li><a href="#">Landmarks &amp; Monuments</a></li>
+                    <li><a href="#">Hidden Gems</a></li>
+                </ul>
+                <h4 class="footer-col-title">PLAN YOUR TRIP</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Travel Essentials</a></li>
+                    <li><a href="#">Expedition Itineraries</a></li>
+                    <li><a href="#">Cultural Etiquette</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="footer-col-title">CULTURE</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Craft Gallery</a></li>
+                    <li><a href="#">Living Traditions</a></li>
+                    <li><a href="#">Spiritual Spaces</a></li>
+                </ul>
+                <h4 class="footer-col-title" style="margin-top:28px;">TASTE &amp; CELEBRATE</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Signature Dishes</a></li>
+                    <li><a href="#">Jubilee Festivals</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 All rights Reserved
+        </div>
+    </div>
+
+    <script>
+        /* ══════════════════════════════════════════════
+           Festival data
+        ══════════════════════════════════════════════ */
+        const FESTIVALS = [
+            {
+                label: 'FESTIVAL',
+                dName: 'CHINESE NEW YEAR',
+                dDate: 'JAN – FEB',
+                period: 'JANUARY TO FEBRUARY',
+                name: 'CHINESE NEW YEAR',
+                desc: "Chinese New Year fills Malaysia's streets and shophouses with two weeks of gilded lanterns, lion dance processions, and the thunder of firecrackers. Families gather for reunion dinners laden with symbolic dishes, while red envelopes pass between generations in a ritual of gratitude and blessing that stretches back centuries across the peninsula's Straits Chinese and Hokkien communities.",
+                symbolism: 'Double fish red packets & red hanging lanterns',
+                stageBg: '#8B1A1A',
+                tabsBg: '#5C0E0E',
+                diamondBg: 'rgba(80,8,8,0.38)',
+                accent: '#E8B850',
+                hrColor: 'rgba(201,151,58,0.45)',
+                watermark: 'Assets/festivals/chineseNY.jpg',
+            },
+            {
+                label: 'CELEBRATION',
+                dName: 'HARI RAYA\nAIDILFITRI',
+                dDate: 'SYWAL',
+                period: 'SYWAL LUNAR MONTH',
+                name: 'HARI RAYA AIDILFITRI',
+                desc: 'Hari Raya Aidilfitri marks the end of Ramadan, the Islamic holy month of fasting. Celebrated with great joy across Malaysia, families don new clothes, visit relatives, and partake in traditional feasts of ketupat, rendang, and lemang.',
+                symbolism: 'Ketupat, pelita lanterns & baju kurung',
+                stageBg: '#185438',
+                tabsBg: '#092318',
+                diamondBg: 'rgba(0,40,15,0.42)',
+                accent: '#7EC87A',
+                hrColor: 'rgba(126,200,122,0.4)',
+                watermark: 'Assets/festivals/hariRaya.jpg',
+            },
+            {
+                label: 'FESTIVAL OF LIGHTS',
+                dName: 'DEEPAVALI',
+                dDate: 'OCT – NOV',
+                period: 'OCTOBER TO NOVEMBER',
+                name: 'DEEPAVALI',
+                desc: 'Deepavali, the Festival of Lights, illuminates the night with thousands of oil lamps and colourful diyas. Indian-Malaysian families create intricate kolam patterns at their doorsteps, exchange mithai sweets, and celebrate the triumph of light over darkness.',
+                symbolism: 'Diyas, kolam patterns & marigold garlands',
+                stageBg: '#3d1f6b',
+                tabsBg: '#120929',
+                diamondBg: 'rgba(20,5,55,0.45)',
+                accent: '#FF8040',
+                hrColor: 'rgba(255,128,64,0.4)',
+                watermark: 'Assets/festivals/deepavali.jpg',
+            },
+            {
+                label: 'HARVEST FESTIVAL',
+                dName: 'GAWAI\nDAYAK',
+                dDate: '1ST JUNE',
+                period: '1ST OF JUNE',
+                name: 'GAWAI DAYAK',
+                desc: 'Gawai Dayak is the grand harvest festival of the Dayak people of Sarawak and Sabah. Celebrated on the 1st of June, it is a time of thanksgiving and communal renewal. Longhouses echo with the sound of traditional gongs as tuak rice wine flows freely.',
+                symbolism: 'Tuak rice wine, pua kumbu textiles & hornbill feathers',
+                stageBg: '#4d2e12',
+                tabsBg: '#1C1005',
+                diamondBg: 'rgba(40,18,0,0.42)',
+                accent: '#D4874A',
+                hrColor: 'rgba(212,135,74,0.4)',
+                watermark: 'Assets/festivals/gawai.jpg',
+            }
+        ];
+
+        /* ── DOM refs ─────────────────────────────── */
+        const festStage = document.getElementById('festStage');
+        const festTabs = document.getElementById('festTabs');
+        const festDiamond = document.getElementById('festDiamond');
+        const festInner = document.getElementById('festDiamondInner');
+        const festDetails = document.getElementById('festDetails');
+        const fdLabel = document.getElementById('fdLabel');
+        const fdName = document.getElementById('fdName');
+        const fdDate = document.getElementById('fdDate');
+        const fdPeriod = document.getElementById('fdPeriod');
+        const fdMainName = document.getElementById('fdMainName');
+        const fdDesc = document.getElementById('fdDesc');
+        const fdSymLbl = document.getElementById('fdSymLbl');
+        const fdSymbolism = document.getElementById('fdSymbolism');
+        const festHr1 = document.getElementById('festHr1');
+        const festHr2 = document.getElementById('festHr2');
+        const festWatermark = document.getElementById('festWatermark');
+
+        /* ── Diamond rotation state ───────────────── */
+        let angle = 45;
+        let currentFest = 0;
+
+        festDiamond.style.transition = 'none';
+        festInner.style.transition = 'none';
+        festDiamond.style.transform = `rotate(${angle}deg)`;
+        festInner.style.transform = `rotate(${-angle}deg)`;
+
+        /* ── switchFestival ───────────────────────── */
+        function switchFestival(idx) {
+            if (idx === currentFest) return;
+            const f = FESTIVALS[idx];
+
+            festWatermark.style.transition = 'opacity 0.25s ease';
+            festWatermark.style.opacity = '0';
+
+            document.querySelectorAll('.fest-tab').forEach((t, i) => {
+                t.classList.toggle('active', i === idx);
+                t.style.color = i === idx ? f.accent : '';
+                t.style.borderBottomColor = i === idx ? f.accent : 'transparent';
+            });
+
+            angle += 90;
+            const ease = 'cubic-bezier(0.34, 1.4, 0.64, 1)';
+            festDiamond.style.transition = `transform 0.72s ${ease}, background-color 0.5s ease`;
+            festInner.style.transition = `transform 0.72s ${ease}`;
+            festDiamond.style.transform = `rotate(${angle}deg)`;
+            festInner.style.transform = `rotate(${-angle}deg)`;
+
+            festDetails.style.transition = 'opacity 0.22s ease, transform 0.22s ease';
+            festDetails.style.opacity = '0';
+            festDetails.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                festStage.style.backgroundColor = f.stageBg;
+                festTabs.style.backgroundColor = f.tabsBg;
+                festDiamond.style.backgroundColor = f.diamondBg;
+
+                festWatermark.src = f.watermark;
+                festWatermark.style.opacity = '';
+
+                fdLabel.textContent = f.label;
+                fdName.textContent = f.dName;
+                fdDate.textContent = f.dDate;
+                fdDate.style.color = f.accent;
+
+                fdPeriod.textContent = f.period;
+                fdPeriod.style.color = f.accent;
+                fdMainName.textContent = f.name;
+                fdDesc.textContent = f.desc;
+                fdSymLbl.style.color = f.accent;
+                fdSymbolism.textContent = f.symbolism;
+
+                festHr1.style.borderTopColor = f.hrColor;
+                festHr2.style.borderTopColor = f.hrColor;
+
+                festDetails.style.transition = 'opacity 0.38s ease, transform 0.38s ease';
+                festDetails.style.opacity = '1';
+                festDetails.style.transform = 'translateY(0)';
+            }, 90);
+
+            currentFest = idx;
+        }
+
+        document.querySelectorAll('.fest-tab').forEach(tab => {
+            tab.addEventListener('click', () => switchFestival(+tab.dataset.idx));
+        });
+
+        /* ── Mobile Nav ────────────────────────────── */
+        const navToggle = document.getElementById('navToggle');
+        const navLinksWrapper = document.getElementById('navLinks');
+        const navMenuIcon = document.getElementById('navMenuIcon');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navToggle.classList.toggle('open');
+                navLinksWrapper.classList.toggle('open', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+                if (navMenuIcon) navMenuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+            });
+        }
+
+        document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+            link.addEventListener('click', e => {
+                if (window.innerWidth > 768) return;
+                const item = link.closest('.nav-item');
+                if (item && item.querySelector('.dropdown')) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.nav-item')) {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
+            }
+            if (!e.target.closest('.main-nav')) {
+                if (navToggle) {
+                    navToggle.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    if (navMenuIcon) navMenuIcon.className = 'ph ph-list';
+                }
+                if (navLinksWrapper) navLinksWrapper.classList.remove('open');
+            }
+        });
+
+        /* ── Hero stars ─────────────────────────────── */
+        (function () {
+            const canvas = document.getElementById('festStars');
+            const section = canvas.parentElement;
+            let stars = [];
+
+            function init() {
+                const W = section.offsetWidth;
+                const H = section.offsetHeight;
+                canvas.width = W;
+                canvas.height = H;
+                const count = Math.floor(W * H / 3500);
+                stars = Array.from({ length: count }, () => ({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    r: Math.random() * 1.1 + 0.3,
+                    base: Math.random() * 0.5 + 0.3,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: Math.random() * 0.007 + 0.003,
+                }));
+            }
+
+            let t = 0;
+            function draw() {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                t += 1;
+                stars.forEach(s => {
+                    const a = Math.max(0.05, Math.min(1, s.base + Math.sin(t * s.speed + s.phase) * 0.22));
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${a})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(draw);
+            }
+
+            init();
+            draw();
+            window.addEventListener('resize', init);
+        })();
+    </script>
+
+</body>
+
+</html>

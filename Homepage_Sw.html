@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warisan Malaysia — Where Three Worlds Meet</title>
+    <title>Warisan Malaysia | Where Three Worlds Meet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     <link rel="stylesheet" href="Style_Sw.css">
 </head>
 
@@ -38,26 +39,16 @@
 
             <!-- Petronas Tower LEFT -->
             <g id="tower-left" transform="translate(460, 0)">
-                <!-- Base podium -->
                 <rect x="15" y="335" width="110" height="65" fill="#0b1628" />
-                <!-- Lower floors -->
                 <rect x="22" y="210" width="96" height="130" fill="#0d1c35" />
-                <!-- Mid step -->
                 <rect x="28" y="165" width="84" height="50" fill="#0d1c35" />
-                <!-- Upper step -->
                 <rect x="34" y="130" width="72" height="40" fill="#0d1c35" />
-                <!-- Ring detail -->
                 <rect x="30" y="128" width="80" height="6" fill="#1a2e50" opacity=".8" />
                 <rect x="30" y="160" width="80" height="6" fill="#1a2e50" opacity=".8" />
-                <!-- Upper shaft -->
                 <rect x="42" y="75" width="56" height="58" fill="#0e1e38" />
-                <!-- Ring 2 -->
                 <rect x="38" y="73" width="64" height="5" fill="#1a2e50" opacity=".8" />
-                <!-- Spire shaft -->
                 <rect x="57" y="20" width="26" height="58" fill="#101f3a" />
-                <!-- Spire -->
                 <polygon points="70,0 63,22 77,22" fill="#121f38" />
-                <!-- Glowing windows -->
                 <rect x="30" y="215" width="8" height="5" fill="rgba(255,210,100,.25)" rx="1" />
                 <rect x="42" y="215" width="8" height="5" fill="rgba(255,210,100,.18)" rx="1" />
                 <rect x="54" y="215" width="8" height="5" fill="rgba(255,210,100,.22)" rx="1" />
@@ -100,8 +91,8 @@
 
         <!-- Top bar -->
         <div class="hero-topbar">
-            <!--logo image here-->
             <a href="#" class="logo">
+                <img src="Assets/hibiscusIcon.png" alt="" class="logo-hibiscus">
                 <span class="logo-text">WARISAN MALAYSIA</span>
             </a>
         </div>
@@ -125,89 +116,88 @@
     <nav class="main-nav" id="main-nav">
         <div class="nav-inner">
 
-            <a href="Homepage_Sw.html" class="nav-link active">Home</a>
+            <!-- Brand -->
+            <a href="Homepage_Sw.html" class="nav-brand">
+                <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+            </a>
 
-            <!-- Discover -->
-            <div class="nav-item">
-                <a href="Cities_Sw.html" class="nav-link">
-                    Discover
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
-                    <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
-                    <a href="#" class="dropdown-item">Hidden Gems</a>
+            <!-- Hamburger (mobile only) -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
+            </button>
+
+            <!-- Nav links -->
+            <div class="nav-links-wrapper" id="navLinks">
+
+                <a href="Homepage_Sw.html" class="nav-link active">Home</a>
+
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Discover
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+                        <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
+                        <a href="#" class="dropdown-item">Hidden Gems</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Culture -->
-            <div class="nav-item">
-                <a href="#" class="nav-link">
-                    Culture
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-item">Craft Gallery</a>
-                    <a href="#" class="dropdown-item">Living Traditions</a>
-                    <a href="#" class="dropdown-item">Spiritual Spaces</a>
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Culture
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Craft Gallery</a>
+                        <a href="#" class="dropdown-item">Living Traditions</a>
+                        <a href="#" class="dropdown-item">Spiritual Spaces</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Taste & Celebrate -->
-            <div class="nav-item">
-                <a href="Dishes_Sw.html" class="nav-link">
-                    Taste &amp; Celebrate
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
-                    <a href="Festivals_Sw.html" class="dropdown-item">Jubilee Festivals</a>
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Taste &amp; Celebrate
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+                        <a href="Festivals_Sw.html" class="dropdown-item">Jubilee Festivals</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Plan Your Trip -->
-            <div class="nav-item">
-                <a href="#plan" class="nav-link">
-                    Plan Your Trip
-                    <svg class="nav-caret" viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </a>
-                <div class="dropdown">
-                    <a href="#" class="dropdown-item">Travel Essentials</a>
-                    <a href="#" class="dropdown-item">Expedition Itineraries</a>
-                    <a href="#" class="dropdown-item">Cultural Etiquette</a>
+                <div class="nav-item">
+                    <button type="button" class="nav-link">
+                        Plan Your Trip
+                        <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+                    </button>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">Travel Essentials</a>
+                        <a href="#" class="dropdown-item">Expedition Itineraries</a>
+                        <a href="#" class="dropdown-item">Cultural Etiquette</a>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </nav>
 
     <!-- ═══════════════ ABOUT ═══════════════ -->
     <section id="discover" style="padding-top:80px; padding-bottom: 60px;">
-        <div class="container">
+        <div class="container About">
             <div class="about-grid">
                 <div class="reveal-left">
                     <h2 class="about-heading">ABOUT MALAYSIA</h2>
                     <p class="about-text">
-                        Nestled at the crossroads of Southeast Asia, Malaysia is a land of breathtaking contrasts —
-                        where ancient rainforests meet gleaming skylines, and centuries-old traditions thrive alongside
-                        bold modernity. From the towering twin spires of Kuala Lumpur to the mist-shrouded longhouses of
+                        Nestled at the crossroads of Southeast Asia, Malaysia is a land of breathtaking contrasts, where
+                        ancient rainforests meet gleaming skylines, and centuries-old traditions thrive alongside bold
+                        modernity. From the towering twin spires of Kuala Lumpur to the mist-shrouded longhouses of
                         Sarawak, every corner whispers a story of resilience, craft, and cultural pride. Three great
-                        civilisations — Malay, Chinese, and Indian — have shaped this nation into a living tapestry of
+                        civilisations, Malay, Chinese, and Indian, have shaped this nation into a living tapestry of
                         colour, flavour, and spirit.
                     </p>
                 </div>
+                <img src="Assets/Kite1.gif" alt="Heritage" class="about-image reveal-right">
             </div>
         </div>
     </section>
@@ -217,103 +207,94 @@
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">LANDMARKS &amp; MONUMENTS</h2>
-                <p class="section-sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</p>
+                <p class="section-sub">Architectural devotion carved in stone, steel, and ancient timber across a land
+                    shaped by many civilisations</p>
             </div>
 
             <div class="cards-grid">
 
                 <!-- Card 1 -->
-                <div class="arch-card reveal delay-1 ">
-                    <div class="arch-wrap ">
-                        <svg class="arch-card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="300"
+                <div class="arch-card reveal delay-1">
+                    <div class="arch-wrap">
+                        <svg class="arch-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="300"
                             height="400">
-                            <!-- Define the clipping path -->
-                            <clipPath id="clip-shape">
-                                <path d="M665.814,405.96v476.6H8.991v-476.6  
-                              c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
-                              c100.072,0,106.874-122.549,106.874-122.549  
-                              s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
-                              C681.36,260.714,665.814,405.96,665.814,405.96z" />
+                            <clipPath id="clip-shape-1">
+                                <path d="M665.814,405.96v476.6H8.991v-476.6
+                                  c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
+                                  c100.072,0,106.874-122.549,106.874-122.549
+                                  s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
+                                  C681.36,260.714,665.814,405.96,665.814,405.96z" />
                             </clipPath>
-
-                            <!-- image -->
-                            <image href="Assets/inGenting.jpg" class="arch-image" clip-path=" url(#clip-shape)"
+                            <image href="Assets/inGenting.jpg" class="arch-image" clip-path="url(#clip-shape-1)"
                                 style="height:900px;" />
-
-                            <!-- stroke on top -->
-                            <path d="M665.814,405.96v476.6H8.991v-476.6  
-                              c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
-                              c100.072,0,106.874-122.549,106.874-122.549  
-                              s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
-                              C681.36,260.714,665.814,405.96,665.814,405.96z" fill="none" stroke="#C9973A"
+                            <path d="M665.814,405.96v476.6H8.991v-476.6
+                                  c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
+                                  c100.072,0,106.874-122.549,106.874-122.549
+                                  s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
+                                  C681.36,260.714,665.814,405.96,665.814,405.96z" fill="none" stroke="#C9973A"
                                 stroke-width="10" stroke-miterlimit="10" />
                         </svg>
                     </div>
-                    <h3 class="arch-card-title">PLACE ONE</h3>
-                    <p class="arch-card-desc">em ipsum dolor sit amet, consectetur adipiscing elit, sed do doadipiscing
-                        elit sed do</p>
+                    <h3 class="arch-card-title">BATU CAVES</h3>
+                    <p class="arch-card-desc">A cathedral of limestone rising 100 metres above Selangor's jungle floor,
+                        Batu Caves shelters one of the oldest Hindu shrines outside India, drawing pilgrims and
+                        travellers from across the world.</p>
                 </div>
 
-                <div class="arch-card reveal delay-1">
+                <!-- Card 2 -->
+                <div class="arch-card reveal delay-2">
                     <div class="arch-wrap">
-                        <svg class="arch-card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="300"
+                        <svg class="arch-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="300"
                             height="400">
-                            <!-- Define the clipping path -->
-                            <clipPath id="clip-shape">
-                                <path d="M665.814,405.96v476.6H8.991v-476.6  
+                            <clipPath id="clip-shape-2">
+                                <path d="M665.814,405.96v476.6H8.991v-476.6
                                           c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
-                                          c100.072,0,106.874-122.549,106.874-122.549  
+                                          c100.072,0,106.874-122.549,106.874-122.549
                                           s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
                                           C681.36,260.714,665.814,405.96,665.814,405.96z" />
                             </clipPath>
-
-                            <!-- image -->
                             <image href="Assets/inGenting.jpg" class="arch-image" style="width:900px; height:1000px;"
-                                clip-path="url(#clip-shape)" />
-
-                            <!-- stroke on top -->
-                            <path d="M665.814,405.96v476.6H8.991v-476.6  
+                                clip-path="url(#clip-shape-2)" />
+                            <path d="M665.814,405.96v476.6H8.991v-476.6
                                           c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
-                                          c100.072,0,106.874-122.549,106.874-122.549  
+                                          c100.072,0,106.874-122.549,106.874-122.549
                                           s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
                                           C681.36,260.714,665.814,405.96,665.814,405.96z" fill="none" stroke="#C9973A"
                                 stroke-width="10" stroke-miterlimit="10" />
                         </svg>
                     </div>
-                    <h3 class="arch-card-title">PLACE ONE</h3>
-                    <p class="arch-card-desc">em ipsum dolor sit amet, consectetur adipiscing elit, sed do doadipiscing
-                        elit sed do</p>
+                    <h3 class="arch-card-title">SULTAN ABDUL SAMAD</h3>
+                    <p class="arch-card-desc">Crowned with copper domes and Moorish arches, this 1897 colonial
+                        masterpiece faces Merdeka Square where Malaysia's independence flag first rose in 1957. One of
+                        Kuala Lumpur's most enduring civic icons.</p>
                 </div>
 
-                <div class="arch-card reveal delay-1">
+                <!-- Card 3 -->
+                <div class="arch-card reveal delay-3">
                     <div class="arch-wrap">
-                        <svg class="arch-card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="300"
+                        <svg class="arch-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="300"
                             height="400">
-                            <!-- Define the clipping path -->
-                            <clipPath id="clip-shape">
-                                <path d="M665.814,405.96v476.6H8.991v-476.6  
+                            <clipPath id="clip-shape-3">
+                                <path d="M665.814,405.96v476.6H8.991v-476.6
                                               c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
-                                              c100.072,0,106.874-122.549,106.874-122.549  
+                                              c100.072,0,106.874-122.549,106.874-122.549
                                               s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
                                               C681.36,260.714,665.814,405.96,665.814,405.96z" />
                             </clipPath>
-
-                            <!-- image -->
                             <image href="Assets/inGenting.jpg" class="arch-image" style="width:900px; height:1000px;"
-                                clip-path="url(#clip-shape)" />
-
-                            <!-- stroke on top -->
-                            <path class="arch-stroke" d="M665.814,405.96v476.6H8.991v-476.6  
+                                clip-path="url(#clip-shape-3)" />
+                            <path class="arch-stroke" d="M665.814,405.96v476.6H8.991v-476.6
                                               c0,0-15.547-145.246,128.253-145.246c0,0-6.801-137.694,93.28-137.694
-                                              c100.072,0,106.874-122.549,106.874-122.549  
+                                              c100.072,0,106.874-122.549,106.874-122.549
                                               s6.81,122.549,106.882,122.549c100.081,0,93.28,137.694,93.28,137.694
                                               C681.36,260.714,665.814,405.96,665.814,405.96z" fill="none"
                                 stroke="#C9973A" stroke-width="10" stroke-miterlimit="10" />
                         </svg>
                     </div>
-                    <h3 class="arch-card-title">PLACE ONE</h3>
-                    <p class="arch-card-desc">em ipsum dolor sit amet, consectetur adipiscing elit, sed do doadipiscing
-                        elit sed do</p>
+                    <h3 class="arch-card-title">MELAKA STADTHUYS</h3>
+                    <p class="arch-card-desc">Built by Dutch colonisers in 1650, the coral-red Stadthuys is the oldest
+                        surviving Dutch building in the East, anchoring a UNESCO riverside quarter that witnessed the
+                        rise and fall of four colonial empires.</p>
                 </div>
 
             </div>
@@ -332,9 +313,9 @@
 
             <!-- Brand -->
             <div class="footer-brand">
-                <a href="#" class="logo"
+                <a href="Homepage_Sw.html" class="logo"
                     style="display:flex;align-items:center;gap:10px;text-decoration:none;color:white;margin-bottom:16px;">
-                    <!-- Logo SVG -->
+                    <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
                     <span
                         style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.18em;color:white;">WARISAN
                         MALAYSIA</span>
@@ -343,25 +324,13 @@
                     Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
                 <div class="footer-socials">
                     <div class="social-icon" title="Email">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <polyline points="2,4 12,13 22,4" />
-                        </svg>
+                        <i class="ph ph-envelope" aria-hidden="true"></i>
                     </div>
                     <div class="social-icon" title="Phone">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
+                        <i class="ph ph-phone" aria-hidden="true"></i>
                     </div>
                     <div class="social-icon" title="Location">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                            <circle cx="12" cy="10" r="3" />
-                        </svg>
+                        <i class="ph ph-map-pin" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -435,20 +404,54 @@
         }, { threshold: 0.15 });
         revealEls.forEach(el => observer.observe(el));
 
-        /* ── Close dropdown on outside click ──── */
+        /* ── Mobile Nav ────────────────────────── */
+        const navToggle = document.getElementById('navToggle');
+        const navLinksWrapper = document.getElementById('navLinks');
+        const navMenuIcon = document.getElementById('navMenuIcon');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = navToggle.classList.toggle('open');
+                navLinksWrapper.classList.toggle('open', isOpen);
+                navToggle.setAttribute('aria-expanded', String(isOpen));
+                if (navMenuIcon) navMenuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+            });
+        }
+
+        /* Mobile dropdown toggles */
+        document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
+            link.addEventListener('click', e => {
+                if (window.innerWidth > 768) return;
+                const item = link.closest('.nav-item');
+                if (item && item.querySelector('.dropdown')) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+
+        /* Close on outside click */
         document.addEventListener('click', e => {
             if (!e.target.closest('.nav-item')) {
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('open');
-                });
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('open'));
+            }
+            if (!e.target.closest('.main-nav')) {
+                if (navToggle) {
+                    navToggle.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    if (navMenuIcon) navMenuIcon.className = 'ph ph-list';
+                }
+                if (navLinksWrapper) navLinksWrapper.classList.remove('open');
             }
         });
 
         /* ── Explore More keyboard ─────────────── */
         const explore = document.querySelector('.explore-wrap');
-        explore.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') explore.click();
-        });
+        if (explore) {
+            explore.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') explore.click();
+            });
+        }
 
         /* ── Parallax on hero title ────────────── */
         const heroContent = document.querySelector('.hero-content');
