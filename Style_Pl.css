@@ -1,0 +1,186 @@
+/* =========================================================
+   Warisan Malaysia — Spiritual Sanctuaries (page styles)
+   ---------------------------------------------------------
+   Page-specific layer only. Loaded AFTER Style_Sw.Css (the
+   shared base: palette, fonts, section/container, reveals)
+   and BEFORE NavFooter/navfooter.css, exactly like the other
+   pages of the site.
+   ========================================================= */
+
+/* ---------------- Page header ---------------- */
+
+.sanctuary-hero {
+    text-align: center;
+    padding: 72px 24px 44px;
+}
+
+.sanctuary-eyebrow {
+    font-family: 'Open Sans', sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    color: var(--gold);
+    margin-bottom: 18px;
+}
+
+.sanctuary-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: .2em;
+    color: var(--maroon);
+    margin-bottom: 16px;
+}
+
+.sanctuary-hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--gray);
+    line-height: 1.8;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.hero-rule {
+    width: 180px;
+    height: 1px;
+    margin: 34px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ---------------- Sanctuary cards ---------------- */
+
+.sanctuaries {
+    padding-top: 24px;
+    padding-bottom: 40px;
+}
+
+.sanctuary-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 88px;
+}
+
+.sanctuary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform .35s ease;
+}
+
+.sanctuary-card:hover {
+    transform: translateY(-8px);
+}
+
+/* The arch frame — same shape and gold stroke as the Homepage
+   landmark cards (.arch-svg comes from Style_Sw.Css). */
+.sanctuary-frame {
+    width: 100%;
+    max-width: 320px;
+}
+
+.sanctuary-frame .arch-svg {
+    height: auto;
+}
+
+.sanctuary-card:hover .arch-svg {
+    filter: drop-shadow(0 12px 30px rgba(201, 151, 58, .35));
+}
+
+.sanctuary-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    font-weight: 600;
+    letter-spacing: .18em;
+    color: var(--gold);
+    margin: 26px 0 12px;
+}
+
+.sanctuary-place {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: .7rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--navy-lt);
+}
+
+.sanctuary-place i {
+    font-size: 14px;
+    color: var(--gold);
+}
+
+.sanctuary-rule {
+    width: 200px;
+    height: 1px;
+    background: rgba(201, 151, 58, .45);
+    margin: 20px auto;
+}
+
+.sanctuary-copy {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--navy-lt);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* ---------------- Mandala decoration ---------------- */
+
+.mandala-wrap {
+    overflow: hidden;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 24px;
+}
+
+.mandala {
+    width: 520px;
+    max-width: 130%;
+    color: var(--gold);
+    opacity: .3;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 768px) {
+    .sanctuary-hero {
+        padding: 52px 20px 32px;
+    }
+
+    .sanctuary-list {
+        gap: 64px;
+    }
+
+    .sanctuary-frame {
+        max-width: 260px;
+    }
+
+    .mandala-wrap {
+        height: 170px;
+    }
+
+    .mandala {
+        width: 360px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sanctuary-card,
+    .sanctuary-card .arch-svg {
+        transition: none;
+    }
+
+    .sanctuary-card:hover {
+        transform: none;
+    }
+}
