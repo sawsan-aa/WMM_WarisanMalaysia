@@ -1,0 +1,423 @@
+/* ===============================
+   LIVING TRADITIONS HERO
+=============================== */
+
+body{
+
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#f8f4ea;
+    color:#2b2b2b;
+
+}
+
+/* HEADER */
+
+header{
+
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:35px 0;
+
+}
+
+.logo{
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:48px;
+    font-weight:700;
+    color:#7d3326;
+
+}
+
+nav{
+
+    display:flex;
+    gap:50px;
+
+}
+
+nav a{
+
+    text-decoration:none;
+    color:#3d3d3d;
+    font-weight:500;
+    font-size:20px;
+
+}
+
+nav a:hover{
+
+    color:#8b463c;
+
+}
+
+/* HERO */
+
+.hero{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:60px auto 140px;
+
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+
+    align-items:center;
+    gap:90px;
+
+}
+
+.hero-subtitle{
+
+    color:#9a7844;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+
+}
+
+.hero h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:82px;
+
+    line-height:0.95;
+
+    margin-bottom:30px;
+
+}
+
+.hero-description{
+
+    font-size:20px;
+
+    line-height:1.9;
+
+    max-width:620px;
+
+    color:#555;
+
+}
+
+.hero-image{
+
+    display:flex;
+    justify-content:center;
+
+}
+
+.hero-image img{
+
+    width:430px;
+    height:430px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+/* ===============================
+   PAGE 2 - SENI SILAT
+=============================== */
+
+.silat-section{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:180px auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:90px;
+
+    align-items:center;
+
+}
+
+.silat-text{
+
+    max-width:520px;
+
+}
+
+.quote-mark{
+
+    font-size:70px;
+
+    color:#d9d2cd;
+
+    display:block;
+
+    margin-bottom:10px;
+
+}
+
+.silat-text h2{
+
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:58px;
+
+    font-style:italic;
+
+    color:#8a463d;
+
+    line-height:1.05;
+
+    margin-bottom:30px;
+
+}
+
+.silat-text p{
+
+    font-size:17px;
+
+    color:#555;
+
+    line-height:1.9;
+
+    margin-bottom:40px;
+
+}
+
+.episode{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    color:#8c6f3e;
+
+    font-weight:600;
+
+}
+
+.line{
+
+    width:70px;
+
+    height:2px;
+
+    background:#b99b64;
+
+}
+
+.silat-image{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.silat-image img{
+
+    width:100%;
+
+    max-width:560px;
+
+    height:360px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+/* ==========================================
+   WAYANG SECTION
+========================================== */
+
+.wayang-section{
+
+    background:#46559b;
+
+    padding:120px 0;
+
+}
+
+.wayang-content{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+.wayang-text{
+
+    color:white;
+
+}
+
+.episode-title{
+
+    color:#d6d6d6;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+
+}
+
+.wayang-text h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:68px;
+
+    margin-bottom:25px;
+
+}
+
+.wayang-text p{
+
+    line-height:1.9;
+
+    font-size:18px;
+
+}
+
+.wayang-image{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.wayang-image img{
+
+    width:100%;
+    max-width:600px;
+
+    height:380px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+
+}
+
+
+/* ==========================================
+   VIDEO SECTION
+========================================== */
+
+.video-section{
+
+    background:#f8f4ea;
+
+    padding:100px 0;
+
+}
+
+.video-content{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 450px;
+
+    gap:80px;
+
+    align-items:center;
+
+}
+
+.video-subtitle{
+
+    color:#9a7844;
+
+    letter-spacing:4px;
+
+    font-size:13px;
+
+}
+
+.video-text h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:58px;
+
+    color:#7b3326;
+
+    margin:20px 0;
+
+}
+
+.video-text p{
+
+    line-height:1.9;
+
+    color:#555;
+
+    font-size:17px;
+
+}
+
+.video-player{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.video-player video{
+
+    width:420px;
+
+    max-width:100%;
+
+    border-radius:15px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+}
