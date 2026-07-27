@@ -87,6 +87,39 @@
             padding: 10px;
             background: #D8EBF5;
             border-radius: 4px;
+            position: relative;
+        }
+
+        .pin-tooltip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            background: rgba(8, 10, 24, 0.55);
+            color: #fff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: .65rem;
+            font-weight: 600;
+            letter-spacing: .06em;
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 5;
+            transition: opacity .15s ease;
+            transform: translateY(-100%);
+        }
+
+        .pin-tooltip.visible {
+            opacity: 1;
+        }
+
+        .pin-tooltip.side-right {
+            transform: translate(8px, -100%);
+        }
+
+        .pin-tooltip.side-left {
+            transform: translate(calc(-100% - 8px), -100%);
         }
 
         .malaysia-map {
@@ -461,49 +494,50 @@
                                     d="M0,0 C-4.5,-12 -30,-36 -30,-54 C-30,-72 -16.5,-84 0,-84 C16.5,-84 30,-72 30,-54 C30,-36 4.5,-12 0,0 Z" />
                             </defs>
 
-                            <g transform="translate(62,155)">
-                                <g class="map-pin" data-city="penang" title="Penang Island">
+                            <g transform="translate(62,155)" data-x="62" data-y="155">
+                                <g class="map-pin" data-city="penang" data-name="Penang Island">
                                     <use href="#pin-shape" class="pin-body" />
                                     <circle class="pin-dot" cx="0" cy="-54" r="15" />
                                 </g>
                             </g>
 
-                            <g transform="translate(210,420)">
-                                <g class="map-pin" data-city="kl" title="Kuala Lumpur">
+                            <g transform="translate(210,420)" data-x="210" data-y="420">
+                                <g class="map-pin" data-city="kl" data-name="Kuala Lumpur">
                                     <use href="#pin-shape" class="pin-body" />
                                     <circle class="pin-dot" cx="0" cy="-54" r="15" />
                                 </g>
                             </g>
 
-                            <g transform="translate(200,520)">
-                                <g class="map-pin active" data-city="melaka" title="Melaka Town">
+                            <g transform="translate(200,520)" data-x="200" data-y="520">
+                                <g class="map-pin active" data-city="melaka" data-name="Melaka Town">
                                     <use href="#pin-shape" class="pin-body" />
                                     <circle class="pin-dot" cx="0" cy="-54" r="15" />
                                 </g>
                             </g>
 
-                            <g transform="translate(365,605)">
-                                <g class="map-pin" data-city="jb" title="Johor Bahru">
+                            <g transform="translate(365,605)" data-x="365" data-y="605">
+                                <g class="map-pin" data-city="jb" data-name="Johor Bahru">
                                     <use href="#pin-shape" class="pin-body" />
                                     <circle class="pin-dot" cx="0" cy="-54" r="15" />
                                 </g>
                             </g>
 
-                            <g transform="translate(686,526)">
-                                <g class="map-pin" data-city="kuching" title="Kuching City">
+                            <g transform="translate(686,526)" data-x="686" data-y="526">
+                                <g class="map-pin" data-city="kuching" data-name="Kuching City">
                                     <use href="#pin-shape" class="pin-body" />
                                     <circle class="pin-dot" cx="0" cy="-54" r="15" />
                                 </g>
                             </g>
 
-                            <g transform="translate(1095,175)">
-                                <g class="map-pin" data-city="kk" title="Kota Kinabalu">
+                            <g transform="translate(1095,175)" data-x="1095" data-y="175">
+                                <g class="map-pin" data-city="kk" data-name="Kota Kinabalu">
                                     <use href="#pin-shape" class="pin-body" />
                                     <circle class="pin-dot" cx="0" cy="-54" r="15" />
                                 </g>
                             </g>
 
                         </svg>
+                        <div class="pin-tooltip" id="pinTooltip"></div>
                     </div>
                 </div>
             </div>
@@ -767,6 +801,38 @@
         /* ── Pin click handlers ─────────────────────────── */
         document.querySelectorAll('.map-pin').forEach(pin => {
             pin.addEventListener('click', () => setCity(pin.dataset.city));
+        });
+
+        /* ── Pin hover tooltip ──────────────────────────── */
+        const mapWrapper = document.getElementById('mapWrapper');
+        const mapSvg = document.querySelector('.malaysia-map');
+        const pinTooltip = document.getElementById('pinTooltip');
+        const VIEWBOX_W = 1327.761;
+
+        document.querySelectorAll('.map-pin').forEach(pin => {
+            const group = pin.parentElement;
+            const x = parseFloat(group.dataset.x);
+            const y = parseFloat(group.dataset.y);
+
+            pin.addEventListener('mouseenter', () => {
+                const svgRect = mapSvg.getBoundingClientRect();
+                const wrapperRect = mapWrapper.getBoundingClientRect();
+                const scale = svgRect.width / VIEWBOX_W;
+
+                const tipX = (svgRect.left - wrapperRect.left) + x * scale;
+                const tipY = (svgRect.top - wrapperRect.top) + (y - 54) * scale;
+                const side = x > VIEWBOX_W / 2 ? 'left' : 'right';
+
+                pinTooltip.textContent = pin.dataset.name;
+                pinTooltip.classList.remove('side-left', 'side-right');
+                pinTooltip.classList.add(`side-${side}`, 'visible');
+                pinTooltip.style.left = `${tipX}px`;
+                pinTooltip.style.top = `${tipY}px`;
+            });
+
+            pin.addEventListener('mouseleave', () => {
+                pinTooltip.classList.remove('visible');
+            });
         });
 
         sliderPrev.addEventListener('click', () => goSlide(-1));
