@@ -10,7 +10,8 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <link rel="stylesheet" href="Style_Sw.css">
+    <link rel="stylesheet" href="Style_Sw.Css">
+    <link rel="stylesheet" href="NavFooter/navfooter.css">
 </head>
 
 <body>
@@ -41,8 +42,8 @@
                     </button>
                     <div class="dropdown">
                         <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
-                        <a href="Homepage_Sw.html#culture" class="dropdown-item">Landmarks &amp; Monuments</a>
-                        <a href="#" class="dropdown-item">Hidden Gems</a>
+                        <a href="landmarks_Am.html" class="dropdown-item">Landmarks &amp; Monuments</a>
+                        <a href="hiddengems_Am.html" class="dropdown-item">Hidden Gems</a>
                     </div>
                 </div>
 
@@ -52,8 +53,8 @@
                         <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
                     </button>
                     <div class="dropdown">
-                        <a href="#" class="dropdown-item">Craft Gallery</a>
-                        <a href="#" class="dropdown-item">Living Traditions</a>
+                        <a href="ArtsCraft_Sb.html" class="dropdown-item">Craft Gallery</a>
+                        <a href="LivingTraditions_Sb.html" class="dropdown-item">Living Traditions</a>
                         <a href="#" class="dropdown-item">Spiritual Spaces</a>
                     </div>
                 </div>
@@ -100,12 +101,9 @@
 
             <!-- Brand -->
             <div class="footer-brand">
-                <a href="Homepage_Sw.html" class="logo"
-                    style="display:flex;align-items:center;gap:10px;text-decoration:none;color:white;margin-bottom:16px;">
+                <a href="Homepage_Sw.html" class="logo">
                     <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
-                    <span
-                        style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:.75rem;letter-spacing:.18em;color:white;">WARISAN
-                        MALAYSIA</span>
+                    <span class="logo-text">WARISAN MALAYSIA</span>
                 </a>
                 <p class="footer-desc">An award-winning editorial journal tracing the majestic, living synthesis of
                     Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
@@ -126,9 +124,9 @@
             <div>
                 <h4 class="footer-col-title">DISCOVER</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Cities Archive</a></li>
-                    <li><a href="#">Landmarks &amp; Monuments</a></li>
-                    <li><a href="#">Hidden Gems</a></li>
+                    <li><a href="Cities_Sw.html">Cities Archive</a></li>
+                    <li><a href="landmarks_Am.html">Landmarks &amp; Monuments</a></li>
+                    <li><a href="hiddengems_Am.html">Hidden Gems</a></li>
                 </ul>
                 <h4 class="footer-col-title">PLAN YOUR TRIP</h4>
                 <ul class="footer-links">
@@ -142,14 +140,14 @@
             <div>
                 <h4 class="footer-col-title">CULTURE</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Craft Gallery</a></li>
-                    <li><a href="#">Living Traditions</a></li>
+                    <li><a href="ArtsCraft_Sb.html">Craft Gallery</a></li>
+                    <li><a href="LivingTraditions_Sb.html">Living Traditions</a></li>
                     <li><a href="#">Spiritual Spaces</a></li>
                 </ul>
                 <h4 class="footer-col-title" style="margin-top:28px;">TASTE &amp; CELEBRATE</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Signature Dishes</a></li>
-                    <li><a href="#">Jubilee Festivals</a></li>
+                    <li><a href="Dishes_Sw.html">Signature Dishes</a></li>
+                    <li><a href="Festivals_Sw.html">Jubilee Festivals</a></li>
                 </ul>
             </div>
 
@@ -159,46 +157,8 @@
         </div>
     </div>
 
-    <script>
-        /* ── Mobile Nav ────────────────────────── */
-        const navToggle = document.getElementById('navToggle');
-        const navLinksWrapper = document.getElementById('navLinks');
-        const navMenuIcon = document.getElementById('navMenuIcon');
 
-        if (navToggle) {
-            navToggle.addEventListener('click', () => {
-                const isOpen = navToggle.classList.toggle('open');
-                navLinksWrapper.classList.toggle('open', isOpen);
-                navToggle.setAttribute('aria-expanded', String(isOpen));
-                if (navMenuIcon) navMenuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
-            });
-        }
-
-        document.querySelectorAll('.nav-item > .nav-link').forEach(link => {
-            link.addEventListener('click', e => {
-                if (window.innerWidth > 768) return;
-                const item = link.closest('.nav-item');
-                if (item && item.querySelector('.dropdown')) {
-                    e.preventDefault();
-                    item.classList.toggle('open');
-                }
-            });
-        });
-
-        document.addEventListener('click', e => {
-            if (!e.target.closest('.nav-item')) {
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('open'));
-            }
-            if (!e.target.closest('.main-nav')) {
-                if (navToggle) {
-                    navToggle.classList.remove('open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                    if (navMenuIcon) navMenuIcon.className = 'ph ph-list';
-                }
-                if (navLinksWrapper) navLinksWrapper.classList.remove('open');
-            }
-        });
-    </script>
+    <script src="NavFooter/navfooter.js"></script>
 
 </body>
 
