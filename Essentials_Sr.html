@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Essentials | Warisan Malaysia</title>
+  <link rel="stylesheet" href="nav_footer.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #FDF8F0;
+      color: #3A3733;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding: 60px 0 50px;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      letter-spacing: .04em;
+      color: #8B1A1A;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto;
+      color: #7C8496;
+    }
+
+    /* ---------- CARD GRID ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #FFFCF7;
+      border: 1px solid #8B1A1A;
+      border-radius: 4px;
+      padding: 26px 28px;
+    }
+
+    .card.wide {
+      grid-column: span 2;
+    }
+
+    .card h2 {
+      margin: 0 0 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #8B1A1A;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: .9rem;
+      color: #55514C;
+    }
+
+    .card>i,
+    .head i {
+      font-size: 24px;
+      color: #A67C21;
+    }
+
+    .head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .card .label {
+      margin: 0 0 4px;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      color: #A67C21;
+    }
+
+    .cols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .big {
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: #2E2A26;
+    }
+
+    .muted {
+      font-size: .8rem;
+      color: #8A857F;
+    }
+
+    /* rows of figures (currency) */
+    .figure {
+      display: flex;
+      justify-content: space-between;
+      font-size: .9rem;
+      padding: 4px 0;
+    }
+
+    .figure b {
+      color: #8B1A1A;
+    }
+
+    /* bullet list (health) */
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: .9rem;
+      color: #55514C;
+    }
+
+    .list i {
+      color: #A67C21;
+      margin-right: 6px;
+    }
+
+    /* pills */
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      background: #F3EBE6;
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: .75rem;
+      color: #6B6660;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #EDE3D6;
+      margin: 18px 0;
+    }
+
+    /* ---------- BANNER LINK ---------- */
+    .banner {
+      display: block;
+      margin: 40px 0;
+      padding: 18px;
+      text-align: center;
+      background: linear-gradient(90deg, #8B1A1A 0%, #8B1A1A 55%, rgba(139, 26, 26, 0) 100%);
+      color: #fff;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-decoration: none;
+    }
+
+    /* ---------- WATERMARK ---------- */
+    .mandala {
+      text-align: center;
+      line-height: 0;
+      padding: 20px 0 50px;
+      color: #1b255e;
+      opacity: .07;
+    }
+
+    .mandala i {
+      font-size: 280px;
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card.wide {
+        grid-column: span 1;
+      }
+
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .mandala i {
+        font-size: 160px;
+      }
+    }
+  </style>
+
+  <!-- Shared nav + footer styles, linked last so they always win -->
+  <link rel="stylesheet" href="NavFooter/navfooter.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+
+      <a href="Homepage_Sw.html" class="nav-brand">
+        <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-links-wrapper" id="navLinks">
+
+        <a href="Homepage_Sw.html" class="nav-link">Home</a>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Discover
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+            <a href="landmarks_Am.html" class="dropdown-item">Landmarks &amp; Monuments</a>
+            <a href="hiddengems_Am.html" class="dropdown-item">Hidden Gems</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Culture
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="ArtsCraft_Sb.html" class="dropdown-item">Craft Gallery</a>
+            <a href="LivingTraditions_Sb.html" class="dropdown-item">Living Traditions</a>
+            <a href="Sanctuaries_Pl.html" class="dropdown-item">Spiritual Spaces</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Taste &amp; Celebrate
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+            <a href="Festivals_Sw.html" class="dropdown-item">Festivals</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Plan Your Trip
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Essentials_Sr.html" class="dropdown-item">Travel Essentials</a>
+            <a href="Heritage_Pl.html" class="dropdown-item">Travel Plans</a>
+            <a href="Etiquette_Sr.html" class="dropdown-item">Cultural Etiquette</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero wrap">
+    <h1>KNOW BEFORE YOU GO</h1>
+    <p>An elegant crossing of Malay, Chinese, and Indian civilizations, from modern skylines into ancient Bornean
+      rainforest canopies.</p>
+  </section>
+
+  <div class="wrap">
+
+    <!-- ═══════════════ ESSENTIALS ═══════════════ -->
+    <div class="grid">
+
+      <!-- Climate -->
+      <div class="card wide">
+        <div class="head">
+          <h2>Climate &amp; Seasons</h2>
+          <i class="ph ph-sun" aria-hidden="true"></i>
+        </div>
+        <div class="cols">
+          <div>
+            <p class="label">CURRENT CONDITIONS</p>
+            <div class="big">31&deg;C / 88&deg;F</div>
+            <p class="muted">Kuala Lumpur: Tropical Humid</p>
+          </div>
+          <div>
+            <p class="label">MONSOON GUIDE</p>
+            <p><b>West Coast:</b> Best between Nov &amp; Aug.</p>
+            <p><b>East Coast:</b> Best between Mar &amp; Oct.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="pills">
+          <span class="pill">#TropicalPacking</span>
+          <span class="pill">#HydrationFirst</span>
+          <span class="pill">#MonsoonAware</span>
+        </div>
+      </div>
+
+      <!-- Visa -->
+      <div class="card">
+        <i class="ph ph-identification-card" aria-hidden="true"></i>
+        <h2>Visa Entry</h2>
+        <p>Most visitors enjoy visa-free entry for up to 90 days. Check the digital arrival card requirements.</p>
+      </div>
+
+      <!-- Currency -->
+      <div class="card">
+        <i class="ph ph-money" aria-hidden="true"></i>
+        <h2>Currency (MYR)</h2>
+        <div class="figure"><span>1.00 USD</span><b>~ 4.72 MYR</b></div>
+        <div class="figure"><span>1.00 EUR</span><b>~ 5.12 MYR</b></div>
+        <hr>
+        <p class="muted">Cash is widely used in smaller markets, while cards and e-wallets dominate cities.</p>
+      </div>
+
+      <!-- Health -->
+      <div class="card">
+        <i class="ph ph-first-aid-kit" aria-hidden="true"></i>
+        <h2>Health &amp; Safety</h2>
+        <ul class="list">
+          <li><i class="ph ph-check-circle" aria-hidden="true"></i>Standard vaccines recommended.</li>
+          <li><i class="ph ph-check-circle" aria-hidden="true"></i>Safe tap water in major cities.</li>
+          <li><i class="ph ph-check-circle" aria-hidden="true"></i>Emergency Number: 999</li>
+        </ul>
+      </div>
+
+      <!-- Connectivity -->
+      <div class="card">
+        <i class="ph ph-wifi-high" aria-hidden="true"></i>
+        <h2>Connectivity</h2>
+        <p>eSims are available at all airports. Malaysia enjoys some of Southeast Asia's fastest 5G coverage in
+          urban hubs.</p>
+        <div class="pills">
+          <span class="pill">5G Ready</span>
+          <span class="pill">eSim Support</span>
+        </div>
+      </div>
+
+    </div>
+
+    <a class="banner" href="Etiquette_Pl.html">READ ETIQUETTE GUIDE &nbsp;&rarr;</a>
+
+  </div>
+
+  <div class="mandala"><i class="ph ph-flower-lotus" aria-hidden="true"></i></div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer" id="plan">
+    <img src="Assets/hibiscus.png" alt="" class="footer-hibiscus" draggable="false">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="Homepage_Sw.html" class="logo">
+          <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
+          <span class="logo-text">WARISAN MALAYSIA</span>
+        </a>
+        <p class="footer-desc">An award-winning editorial journal tracing the majestic, living synthesis of
+          Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
+        <div class="footer-socials">
+          <div class="social-icon" title="Email"><i class="ph ph-envelope" aria-hidden="true"></i></div>
+          <div class="social-icon" title="Phone"><i class="ph ph-phone" aria-hidden="true"></i></div>
+          <div class="social-icon" title="Location"><i class="ph ph-map-pin" aria-hidden="true"></i></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">DISCOVER</h4>
+        <ul class="footer-links">
+          <li><a href="Cities_Sw.html">Cities Archive</a></li>
+          <li><a href="landmarks_Am.html">Landmarks &amp; Monuments</a></li>
+          <li><a href="hiddengems_Am.html">Hidden Gems</a></li>
+        </ul>
+        <h4 class="footer-col-title">PLAN YOUR TRIP</h4>
+        <ul class="footer-links">
+          <li><a href="Essentials_Pl.html">Travel Essentials</a></li>
+          <li><a href="Heritage_Pl.html">Travel Plans</a></li>
+          <li><a href="Etiquette_Pl.html">Cultural Etiquette</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">CULTURE</h4>
+        <ul class="footer-links">
+          <li><a href="ArtsCraft_Sb.html">Craft Gallery</a></li>
+          <li><a href="LivingTraditions_Sb.html">Living Traditions</a></li>
+          <li><a href="Sanctuaries_Pl.html">Spiritual Spaces</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:28px;">TASTE &amp; CELEBRATE</h4>
+        <ul class="footer-links">
+          <li><a href="Dishes_Sw.html">Signature Dishes</a></li>
+          <li><a href="Festivals_Sw.html">Festivals</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 All rights Reserved
+    </div>
+  </div>
+
+  <script src="NavFooter/navfooter.js"></script>
+
+</body>
+
+</html>

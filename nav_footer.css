@@ -7,7 +7,7 @@
    Homepage no matter what the page stylesheet does.
 
    Usage in every page <head>:
-       <link rel="stylesheet" href="NavFooter/navfooter.css">
+       <link rel="stylesheet" href="nav_footer.css">
    Usage before </body>:
        <script src="NavFooter/navfooter.js"></script>
    ═══════════════════════════════════════════════════════════════ */

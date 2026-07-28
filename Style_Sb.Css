@@ -13,7 +13,7 @@ body {
 
 /* HEADER
    The site header (nav bar) and footer now live in the shared
-   stylesheet NavFooter/navfooter.css so that every page matches
+   stylesheet nav_footer.css so that every page matches
    the Homepage. Do not re-declare header / nav / .logo here. */
 
 /* HERO */

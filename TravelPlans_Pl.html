@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Must-Visit Heritage Trails of Malacca | Warisan Malaysia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    :root {
+      --hp-cream: #fdf6ec;
+      --hp-maroon: #8a3434;
+      --hp-maroon-dark: #6f2929;
+      --hp-gold: #e0a63e;
+      --hp-gold-dark: #c98f2e;
+      --hp-green: #3f6b4a;
+      --hp-navy: #2c3a5e;
+      --hp-navy-dark: #212c47;
+      --hp-ink: #23262b;
+      --hp-text-gray: #6b6f76;
+      --hp-line: #e7ddcb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--hp-cream);
+      color: var(--hp-ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* ---------- PAGE LAYOUT ---------- */
+    .page {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 44px;
+      align-items: start;
+    }
+
+    /* ---------- HEADER BLOCK ---------- */
+    .eyebrow {
+      color: var(--hp-gold-dark);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 2.5px;
+      margin-bottom: 14px;
+    }
+
+    h1.page-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 3.2rem;
+      line-height: 1.15;
+      color: var(--hp-ink);
+      margin-bottom: 30px;
+      max-width: 640px;
+    }
+
+    .filter-block {
+      margin-bottom: 16px;
+    }
+
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .filter-label {
+      font-weight: 600;
+      color: var(--hp-ink);
+      font-size: 0.95rem;
+    }
+
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 1.5px solid var(--hp-line);
+      background: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--hp-ink);
+      transition: all .15s;
+    }
+
+    .filter-pill svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .filter-pill.active {
+      background: var(--hp-maroon);
+      border-color: var(--hp-maroon);
+      color: #fff;
+    }
+
+    .filter-row.days .filter-pill.active {
+      background: var(--hp-gold-dark);
+      border-color: var(--hp-gold-dark);
+    }
+
+    .filter-pill:not(.active):hover {
+      border-color: var(--hp-maroon);
+      color: var(--hp-maroon);
+    }
+
+    .filter-row.days .filter-pill:not(.active):hover {
+      border-color: var(--hp-gold-dark);
+      color: var(--hp-gold-dark);
+    }
+
+    .filter-row.days {
+      margin-bottom: 44px;
+    }
+
+    /* ---------- TRAIL SECTION ---------- */
+    .trail-section {
+      margin-bottom: 56px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .section-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      background: var(--hp-gold);
+      color: #fff;
+    }
+
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--hp-maroon);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 1px;
+      background: var(--hp-line);
+    }
+
+    .stop-card {
+      position: relative;
+      margin-left: 26px;
+      margin-bottom: 22px;
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      background: #fff;
+      border: 1px solid var(--hp-line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .stop-card::before {
+      content: "";
+      position: absolute;
+      left: -30px;
+      top: 22px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--hp-gold);
+      box-shadow: 0 0 0 4px var(--hp-cream);
+    }
+
+    .stop-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 210px;
+    }
+
+    .stop-body {
+      padding: 24px 26px;
+      position: relative;
+    }
+
+    .stop-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .stop-time {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--hp-gold-dark);
+      text-transform: uppercase;
+    }
+
+    .stop-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stop-badge svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .stop-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--hp-ink);
+    }
+
+    .stop-body p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--hp-text-gray);
+      margin-bottom: 18px;
+    }
+
+    .stop-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      padding: 10px 18px;
+      border: 1.5px solid var(--hp-maroon);
+      color: var(--hp-maroon);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: transparent;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: var(--hp-maroon);
+      color: #fff;
+    }
+
+    .link-with-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--hp-ink);
+    }
+
+    .link-with-icon:hover {
+      color: var(--hp-gold-dark);
+    }
+
+    .link-with-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ---------- SIDEBAR ---------- */
+    .sidebar {
+      position: sticky;
+      top: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .route-card {
+      background: linear-gradient(160deg, var(--hp-navy), var(--hp-navy-dark));
+      color: #fff;
+      border-radius: 18px;
+      padding: 28px 26px;
+    }
+
+    .route-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .route-card-head h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .route-card-head svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.8;
+    }
+
+    .route-steps {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 24px;
+    }
+
+    .route-steps::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .route-step {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .route-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .route-step::before {
+      content: "";
+      position: absolute;
+      left: -24px;
+      top: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .route-step.current::before {
+      background: var(--hp-gold);
+    }
+
+    .route-step.end::before {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .route-step-label {
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 4px;
+    }
+
+    .route-step strong {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .route-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .stat-box .label {
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 4px;
+    }
+
+    .stat-box .value {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .btn-gold {
+      width: 100%;
+      padding: 14px;
+      background: var(--hp-gold);
+      color: #3a2b0f;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .btn-gold:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-gold:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .btn-gold svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .scan-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .scan-note svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border: 1px solid var(--hp-line);
+      border-radius: 16px;
+      padding: 26px;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--hp-ink);
+      margin-bottom: 20px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #e7e2d8;
+    }
+
+    .testimonial-author strong {
+      display: block;
+      color: var(--hp-maroon);
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+
+    .testimonial-author span {
+      font-size: 0.75rem;
+      color: var(--hp-text-gray);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .disclaimer {
+      max-width: 640px;
+      font-size: 0.78rem;
+      color: var(--hp-text-gray);
+      line-height: 1.6;
+      margin: -6px 0 40px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 980px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 40px 20px 70px;
+      }
+
+      h1.page-title {
+        font-size: 2.2rem;
+      }
+
+      .stop-card {
+        grid-template-columns: 1fr;
+      }
+
+      .stop-image {
+        min-height: 180px;
+      }
+
+      .timeline {
+        padding-left: 0;
+      }
+
+      .stop-card {
+        margin-left: 20px;
+      }
+    }
+  </style>
+
+  <!-- Shared nav + footer styles, linked last so they always win -->
+  <link rel="stylesheet" href="nav_footer.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+
+      <!-- Brand -->
+      <a href="Homepage_Sw.html" class="nav-brand">
+        <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+      </a>
+
+      <!-- Hamburger (mobile only) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
+      </button>
+
+      <!-- Nav links -->
+      <div class="nav-links-wrapper" id="navLinks">
+
+        <a href="Homepage_Sw.html" class="nav-link">Home</a>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Discover
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+            <a href="landmarks_Am.html" class="dropdown-item">Landmarks &amp; Monuments</a>
+            <a href="hiddengems_Am.html" class="dropdown-item">Hidden Gems</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Culture
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="ArtsCraft_Sb.html" class="dropdown-item">Craft Gallery</a>
+            <a href="LivingTraditions_Sb.html" class="dropdown-item">Living Traditions</a>
+            <a href="Sanctuaries_Pl.html" class="dropdown-item">Spiritual Spaces</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Taste &amp; Celebrate
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+            <a href="Festivals_Sw.html" class="dropdown-item">Festivals</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Plan Your Trip
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Essentials_Sr.html" class="dropdown-item">Travel Essentials</a>
+            <a href="TravelPlans_Pl.html" class="dropdown-item">Travel plans</a>
+            <a href="Etiquette_Sr.html" class="dropdown-item">Cultural Etiquette</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="eyebrow">CURATED JOURNEYS</div>
+    <h1 class="page-title">Must-Visit Heritage Trails of Malacca</h1>
+
+    <div class="filter-block">
+      <div class="filter-row categories">
+        <span class="filter-label">Filter Experiences:</span>
+        <button class="filter-pill active" data-filter="heritage">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 21V4m0 0h13l-2 4 2 4H4" />
+          </svg>
+          Heritage
+        </button>
+        <button class="filter-pill" data-filter="food">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2v8a2 2 0 0 0 2 2v10M6 2v6M10 2v6M15 2s-2 5-2 8 2 4 2 4v8" />
+          </svg>
+          Food
+        </button>
+        <button class="filter-pill" data-filter="nature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21C4 21 3 12 3 8c8 0 13 3 13 8 0-5 5-8 5-8s1 13-9 13z" />
+          </svg>
+          Nature
+        </button>
+      </div>
+
+      <div class="filter-row days">
+        <span class="filter-label">Plan Length:</span>
+        <button class="filter-pill active" data-days="3">3 Days</button>
+        <button class="filter-pill" data-days="7">7 Days</button>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      Sites, eateries and links below are real Malacca destinations, but hours, prices and booking pages change often —
+      "Book/Reserve" and "View on Map" open a live Google search or Google Maps lookup so you always land on current
+      info
+      rather than a link that could go stale.
+    </p>
+
+    <div class="layout">
+
+      <!-- MAIN COLUMN -->
+      <div class="main-col">
+        <div id="trailSections"></div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="route-card">
+          <div class="route-card-head">
+            <h3>Route Summary</h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+              <path d="M4 7h13l-3-3m3 3l-3 3M20 17H7l3 3m-3-3l3-3" />
+            </svg>
+          </div>
+
+          <div class="route-steps">
+            <div class="route-step">
+              <div class="route-step-label">Start</div>
+              <strong>Kuala Lumpur Intl. (KUL)</strong>
+            </div>
+            <div class="route-step current">
+              <div class="route-step-label">First Stop</div>
+              <strong id="currentStop">—</strong>
+            </div>
+            <div class="route-step end">
+              <div class="route-step-label">Last Stop</div>
+              <strong id="endStop">—</strong>
+            </div>
+          </div>
+
+          <div class="route-stats">
+            <div class="stat-box">
+              <div class="label">Stops</div>
+              <div class="value" id="stopsCount">—</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Duration</div>
+              <div class="value" id="durationVal">—</div>
+            </div>
+          </div>
+
+          <button class="btn-gold" id="downloadPdfBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" />
+            </svg>
+            DOWNLOAD PDF PLAN
+          </button>
+
+          <div class="scan-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <path d="M14 2v6h6" />
+            </svg>
+            Generates a printable itinerary for your selected plan
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p>&ldquo;The journey was seamless. The boarding-pass style tickets made us feel like travelers from another
+            era.&rdquo;</p>
+          <div class="testimonial-author">
+            <div class="avatar"></div>
+            <div>
+              <strong>ELARA VANCE</strong>
+              <span>Luxury Traveler</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer" id="plan">
+    <img src="Assets/hibiscus.png" alt="" class="footer-hibiscus" draggable="false">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="Homepage_Sw.html" class="logo">
+          <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
+          <span class="logo-text">WARISAN MALAYSIA</span>
+        </a>
+        <p class="footer-desc">An award-winning editorial journal tracing the majestic, living synthesis of
+          Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
+        <div class="footer-socials">
+          <div class="social-icon" title="Email">
+            <i class="ph ph-envelope" aria-hidden="true"></i>
+          </div>
+          <div class="social-icon" title="Phone">
+            <i class="ph ph-phone" aria-hidden="true"></i>
+          </div>
+          <div class="social-icon" title="Location">
+            <i class="ph ph-map-pin" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discover -->
+      <div>
+        <h4 class="footer-col-title">DISCOVER</h4>
+        <ul class="footer-links">
+          <li><a href="Cities_Sw.html">Cities Archive</a></li>
+          <li><a href="landmarks_Am.html">Landmarks &amp; Monuments</a></li>
+          <li><a href="hiddengems_Am.html">Hidden Gems</a></li>
+        </ul>
+        <h4 class="footer-col-title">PLAN YOUR TRIP</h4>
+        <ul class="footer-links">
+          <li><a href="Essentials_Sr.html">Travel Essentials</a></li>
+          <li><a href="TravelPlans_Pl.html">Travel plans</a></li>
+          <li><a href="Etiquette_Sr.html">Cultural Etiquette</a></li>
+        </ul>
+      </div>
+
+      <!-- Culture -->
+      <div>
+        <h4 class="footer-col-title">CULTURE</h4>
+        <ul class="footer-links">
+          <li><a href="ArtsCraft_Sb.html">Craft Gallery</a></li>
+          <li><a href="LivingTraditions_Sb.html">Living Traditions</a></li>
+          <li><a href="Sanctuaries_Pl.html">Spiritual Spaces</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:28px;">TASTE &amp; CELEBRATE</h4>
+        <ul class="footer-links">
+          <li><a href="Dishes_Sw.html">Signature Dishes</a></li>
+          <li><a href="Festivals_Sw.html">Festivals</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 All rights Reserved
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================
+       ICONS
+    ========================================================= */
+    const ICONS = {
+      star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>',
+      fork: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v8a2 2 0 0 0 2 2v10M6 2v6M10 2v6M15 2s-2 5-2 8 2 4 2 4v8"/></svg>',
+      leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21C4 21 3 12 3 8c8 0 13 3 13 8 0-5 5-8 5-8s1 13-9 13z"/></svg>',
+      map: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20l-6 2V6l6-2 6 2 6-2v16l-6 2-6-2z"/><path d="M9 4v16M15 6v16"/></svg>'
+    };
+
+    /* =========================================================
+       PHOTOS — paste a URL for any place name below and it will
+       replace that card's colored placeholder automatically.
+       The name must match the stop's "name" field exactly
+       (copy it from the itineraryData list further down).
+       Leave a place out of this list and it just keeps using
+       the placeholder — nothing else breaks.
+    
+       Example:
+       'Stadthuys Red Square': 'https://images.unsplash.com/photo-xxxxxxx',
+    ========================================================= */
+    const CUSTOM_IMAGES = {
+      'Stadthuys Red Square': 'https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=400,height=265,dpr=2/tour_img/c5da1a75fd6062235c15f34eee069ab3044d24e0c04d370681ef3e6e7135cb46.png',
+      'St Paul\'s Church Hill': 'https://upload.wikimedia.org/wikipedia/commons/b/bf/St._Paul%27s_Church_Malacca_2012.JPG',
+      'Jonker Street (Jalan Hang Jebat)': 'https://static.wixstatic.com/media/ee8e9b_68326aeec0574de7bc40a87d2844a508~mv2.jpeg/v1/fill/w_568,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ee8e9b_68326aeec0574de7bc40a87d2844a508~mv2.jpeg',
+      'Baba & Nyonya Heritage Museum': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/6c/32/fb/caption.jpg?w=1200&h=-1&s=1',
+      'Cheng Hoon Teng Temple': 'https://discovermalaysia-unesco.com/wp-content/uploads/2024/12/CHT-Temple-08.jpg',
+      'Kampung Kling Mosque': 'https://www.thepoortraveler.net/wp-content/uploads/2012/08/Kampung-Kling-Mosque-melaka1.jpg',
+      'Wild Coriander': 'https://wnfdiary.com/wp-content/uploads/2019/01/wild-coriander-melaka-1.jpg.webp',
+      'Capitol Satay': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2e/72/cf/d3/formerly-operated-in.jpg?w=1100&h=600&s=1',
+      'Jonker Street Night Market': 'https://ik.imagekit.io/tvlk/dam/i/01k67mcbam6vrqk288bc758x6e.jpeg',
+      'Low Yong Moh': 'https://melaka.96network.com/wp-content/uploads/2022/10/Melaka-Low-Yong-Moh-Restaurant-F-Janie-Chua.jpg',
+      'Nancy\'s Kitchen': 'https://melaka.96network.com/wp-content/uploads/2022/07/Nancy-Kitchen-Melaka.jpg',
+      'Klebang Coconut Shake stalls': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/21/36/4a/photo8jpg.jpg?w=1800&h=1000&s=1',
+      'Ayer Keroh Recreational Forest': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/00/48/60/caption.jpg?w=1100&h=1100&s=1',
+      'Taman Rempah & Riverwalk': 'https://www.agoda.com/wp-content/uploads/2024/04/Malacca-Malaysia-1244x700.jpg',
+      'Zoo Melaka': 'https://www.maisinggah.com/wp-content/uploads/2022/06/Zoo-Melaka-Laluan-Dinosaur.jpg.webp',
+      'Taman Botanikal Melaka': 'https://www.maisinggah.com/wp-content/uploads/2023/02/Hang-Tuah-Centre-Melaka.webp',
+      'Klebang Beach': 'https://scontent.fkul10-2.fna.fbcdn.net/v/t1.6435-9/62645984_2250566541687294_4931826700213288960_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=QWSBQcHPrlQQ7kNvwGiZATc&_nc_oc=AdoTfu3AjAKpCpWNJxCsP1Lolyrssb8EBwAmey1zCGDMGfBylUQRl1y1UCymN3icB5U&_nc_zt=23&_nc_ht=scontent.fkul10-2.fna&_nc_gid=RfOnsw1jh270OS0h-jWXXw&_nc_ss=78289&oh=00_AQDFHDVzaWYvzQ-p5yMjVgx1c4DRtXcDk1zlqAbRdFxRHQ&oe=6A8FA2A6',
+      'Tanjung Tuan': 'https://www.forestry.gov.my/media/zoo/images/tanjung-tuan_5650c48a8251b6dcc1aa7f4c4bdf8462.JPG',
+      'A Famosa (Porta de Santiago)': 'https://i0.wp.com/www.theroadtoanywhere.com/wp-content/uploads/2017/08/A-Famosa-Fort-Melaka.jpg?fit=1200%2C801&ssl=1',
+      'Menara Taming Sari': 'https://www.utusan.com.my/wp-content/uploads/2025/08/PHOTO-2025-08-05-13-04-41.jpg',
+      'Bukit China': 'https://live.staticflickr.com/7407/15827212374_6604669118_b.jpg',
+      'Sam Poh Kong Temple': 'https://live.staticflickr.com/65535/50684709146_cbbe13c73c_b.jpg',
+      'Christ Church Melaka': 'https://discovermalaysia-unesco.com/wp-content/uploads/2024/12/Christ-Church-06.jpg',
+      'Melaka River Cruise': 'https://r1.community.samsung.com/t5/image/serverpage/image-id/534213iF1718B18902B1830?v=v2',
+      'Portuguese Settlement': 'https://www.blindbild.com/wp-content/uploads/2020/09/melaka-portugese-settlement.jpg',
+      'Melaka Straits Mosque': 'https://www.cestee.com/images/22/59/202259-1440w.webp',
+      'Ban Lee Siang': 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRUg3EJeYhLouDUPCJ56wQd0wyf2ym2QcQ1gIK_KS0LixpjqOVhZiaPW36OV0f1Bpl6V6ybdt_mpQZYky3l3wQTrUaHq48zYb2kYbuaWLmkWAKxcOjpm_wP-8M3hIF9bN_tnX4FEnArZI/s1600/IMG_8818.jpg',
+      'Ole Sayang': 'https://melaka.96network.com/wp-content/uploads/2022/07/Restaurant-Ole-Sayang-Melaka-2.jpg',
+      'Uptown Pahlawan Walk': 'https://www.utusan.com.my/wp-content/uploads/2024/01/SCHEDULE-uptown.jpg',
+      'Medan Selera Warisan Makanan': 'https://scontent.fkul15-1.fna.fbcdn.net/v/t39.30808-6/474174043_916160420712734_5440530654001298766_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x2042&ctp=s2048x2042&_nc_cat=105&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=oFkmitFXDAgQ7kNvwHy0u07&_nc_oc=AdrX6oFeuEMrnxz2dcxgVN2sGdIqQB1a-kaFfsFKgNI3iRTT33_WKcjrWFxcFLtU6TQ&_nc_zt=23&_nc_ht=scontent.fkul15-1.fna&_nc_gid=j3EonfmekAitrzniEaCTfA&_nc_ss=78289&oh=00_AQBSXfMPh5xoDtSvbmZTnSNOBCoOgkd3w2WETf9M7zvWqg&oe=6A6E2B10',
+      'Poh Piah Union': 'https://media.freemalaysiatoday.com/wp-content/uploads/2022/12/making-popiah.jpg',
+      'Restoran Amy Heritage Nyonya Cuisine': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/86/50/d7/20170606-121353-largejpg.jpg?w=1200&h=1200&s=1',
+      'Umbai Seafood stalls': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/1d/4e/89/umbai-grilled-fish.jpg?w=1000&h=600&s=1',
+      'Bibik Vintage Café': 'https://hungrygowhere.com/wp-content/uploads/2025/09/02-sy-bibik-violet-hgw.jpg',
+      'Pengkalan Balak': 'https://www.mpag.gov.my/wp-content/uploads/2022/04/Penyu-Insta.jpg',
+      'Kesidang Recreational Forest': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/23/66/dc/walking-on-tree-top-so.jpg?w=900&h=500&s=1',
+      'Air Keroh Lake': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/90/6a/1b/caption.jpg?w=1200&h=1200&s=1',
+      'Bukit China Forest Walk': 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/87/90/fd/caption.jpg?w=1200&h=1200&s=1',
+      'Melaka River — upstream kampung stretch': 'https://melaka.96network.com/wp-content/uploads/2022/05/Melaka-River-Walk.jpg',
+      'Taman Rimba Bukit Senjuang': 'https://img2.penangpropertytalk.com/wp-content/uploads/2024/02/taman-rimba-bm-e1706760513912.jpeg',
+      'Pulau Besar boat trip': 'https://visitjohor2026.my/wp-content/uploads/2025/12/Pulau-Besar-1-1200x800.jpg',
+      'Sungai Duyung Mangrove area': 'https://www.alltrails.com/mugen/image/location-app-router?url=https%3A%2F%2Fimages.alltrails.com%2FeyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMTMzMTc1NDg4L2VlNWQ2ZDI3OGE0NTg5OWJkYjI3NDcxMDZlNGYzMjhlLmpwZyIsImVkaXRzIjp7InRvRm9ybWF0Ijoid2VicCIsInJlc2l6ZSI6eyJ3aWR0aCI6IjEwODAiLCJoZWlnaHQiOiI3MDAiLCJmaXQiOiJjb3ZlciJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ%3D%3D&w=3840&q=90'
+      // 'Wild Coriander': 'https://your-image-url-here.jpg',
+    };
+
+    /* =========================================================
+       LINK HELPERS  — no guessed/possibly-dead URLs.
+       Map = direct Google Maps lookup. Book/Reserve = live Google
+       search, which itself surfaces the venue's real site/listing.
+    ========================================================= */
+    function mapsUrl(name) {
+      return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(name + ', Melaka, Malaysia');
+    }
+    function searchUrl(name, suffix) {
+      return 'https://www.google.com/search?q=' + encodeURIComponent(name + ' Melaka ' + suffix);
+    }
+    function placeholderImg(name, color) {
+      return 'https://placehold.co/460x420/' + color + '/ffffff?text=' + encodeURIComponent(name).replace(/%20/g, '+');
+    }
+
+    const ACTION_LABEL = { book: 'BOOK ENTRY', reserve: 'RESERVE TABLE' };
+    const ACTION_SUFFIX = { book: 'tickets booking', reserve: 'reservation' };
+
+    /* =========================================================
+       ITINERARY DATA — 3 categories, each with a full 7-day trail.
+       The "3 Days" filter simply shows the first 3 days of the
+       same trail; "7 Days" shows the whole thing.
+    ========================================================= */
+    const itineraryData = {
+      heritage: {
+        label: 'Heritage',
+        badgeIcon: 'star',
+        badgeColor: '#8a3434',
+        days: [
+          {
+            title: 'The Heart of Old Malacca', stops: [
+              {
+                time: '09:00 AM', type: 'Heritage Site', name: 'Stadthuys Red Square', action: 'book',
+                // 'image' is optional — add it to any stop to replace its placeholder with a real photo.
+                // Local file:  image: 'images/stadthuys.jpg'   (put the file next to this HTML file)
+                // Web URL:     image: 'https://example.com/photos/stadthuys.jpg'
+                desc: 'Built by the Dutch in 1650, this landmark remains the oldest Dutch building in the East. Explore the Museum of History and Ethnography within these iconic crimson walls.'
+              },
+              {
+                time: '11:00 AM', type: 'Historic Ruins', name: "St Paul's Church Hill", action: null,
+                desc: 'Climb to the ruined 16th-century chapel on the hilltop above town, once the temporary grave of St Francis Xavier, for the best rooftop view of the Straits.'
+              }
+            ]
+          },
+          {
+            title: 'Streets of Living Heritage', stops: [
+              {
+                time: '10:00 AM', type: 'Heritage Street', name: 'Jonker Street (Jalan Hang Jebat)', action: null,
+                desc: 'Wander the UNESCO-listed spine of old Malacca, lined with antique shops, clan houses and Peranakan shophouse facades dating back generations.'
+              },
+              {
+                time: '02:00 PM', type: 'Museum', name: 'Baba & Nyonya Heritage Museum', action: 'book',
+                desc: 'Step inside a lovingly preserved 19th-century Peranakan townhouse to see the furniture, porcelain and customs of the Straits Chinese community.'
+              }
+            ]
+          },
+          {
+            title: 'Faith Along the River', stops: [
+              {
+                time: '09:30 AM', type: 'Temple', name: 'Cheng Hoon Teng Temple', action: null,
+                desc: 'Malaysia\'s oldest functioning Chinese temple, founded in 1645, blends Taoist, Buddhist and Confucian worship under one intricately carved roofline.'
+              },
+              {
+                time: '11:30 AM', type: 'Mosque', name: 'Kampung Kling Mosque', action: null,
+                desc: 'A 1748 mosque whose pagoda-like minaret and Corinthian columns fuse Sumatran, Chinese, Hindu and British colonial influences into one building.'
+              }
+            ]
+          },
+          {
+            title: 'Fortress & Skyline', stops: [
+              {
+                time: '09:00 AM', type: 'Fortress Ruins', name: 'A Famosa (Porta de Santiago)', action: null,
+                desc: 'The last standing gate of the 16th-century Portuguese fortress, one of the oldest surviving pieces of European architecture in Asia.'
+              },
+              {
+                time: '04:00 PM', type: 'Viewing Tower', name: 'Menara Taming Sari', action: 'book',
+                desc: 'Ride the revolving tower 80 metres up for a full panoramic sweep of Malacca town, the river mouth and the strait beyond.'
+              }
+            ]
+          },
+          {
+            title: 'Sacred Hill of the Chinese Diaspora', stops: [
+              {
+                time: '09:00 AM', type: 'Historic Hill', name: 'Bukit China', action: null,
+                desc: 'One of the largest Chinese cemeteries outside mainland China, its terraced graves tied to the legend of Ming princess Hang Li Po.'
+              },
+              {
+                time: '11:00 AM', type: 'Temple', name: 'Sam Poh Kong Temple', action: null,
+                desc: 'Set at the foot of Bukit China around a well linked to Admiral Zheng He\'s fleet, said to grant long life to those who drink from it.'
+              }
+            ]
+          },
+          {
+            title: 'Colonial Crossroads', stops: [
+              {
+                time: '09:30 AM', type: 'Heritage Site', name: 'Christ Church Melaka', action: null,
+                desc: 'This salmon-red 18th-century Dutch church, built from bricks shipped from the Netherlands, still holds an active Anglican congregation today.'
+              },
+              {
+                time: '05:00 PM', type: 'River Tour', name: 'Melaka River Cruise', action: 'book',
+                desc: 'Drift past riverside murals, godowns and kampung houses on a 45-minute boat ride, best timed for golden hour along the water.'
+              }
+            ]
+          },
+          {
+            title: 'Coastal Legacy', stops: [
+              {
+                time: '10:00 AM', type: 'Cultural Village', name: 'Portuguese Settlement', action: null,
+                desc: 'Home to the Kristang community, descendants of 16th-century Portuguese settlers who still speak a Portuguese-Malay creole today.'
+              },
+              {
+                time: '05:30 PM', type: 'Floating Mosque', name: 'Melaka Straits Mosque', action: null,
+                desc: 'Perched on stilts over the water, this mosque appears to float at high tide and is especially striking at sunset.'
+              }
+            ]
+          }
+        ]
+      },
+
+      food: {
+        label: 'Food',
+        badgeIcon: 'fork',
+        badgeColor: '#c98f2e',
+        days: [
+          {
+            title: 'The Heart of Old Malacca', stops: [
+              {
+                time: '12:30 PM', type: 'Culinary Stop', name: 'Wild Coriander', action: 'reserve',
+                desc: 'A unique Malaccan tradition — a riverside restaurant close to the heritage site. Beautifully decorated, its heart is that of nature itself.'
+              },
+              {
+                time: '07:00 PM', type: 'Satay Celup', name: 'Capitol Satay', action: 'reserve',
+                desc: 'The self-service hotpot said to have been invented in Malacca — skewer your own ingredients and dunk them into a communal peanut broth.'
+              }
+            ]
+          },
+          {
+            title: 'Streets After Dark', stops: [
+              {
+                time: '06:00 PM', type: 'Street Food', name: 'Jonker Street Night Market', action: null,
+                desc: 'The weekend pasar malam turns Jonker Street into a food crawl of cendol, chicken rice balls, popiah and grilled skewers.'
+              },
+              {
+                time: '09:00 AM', type: 'Dim Sum Coffeehouse', name: 'Low Yong Moh', action: null,
+                desc: 'A century-old restaurant still turning out old-school dim sum and buns from recipes passed down through generations.'
+              }
+            ]
+          },
+          {
+            title: 'Nyonya Kitchens', stops: [
+              {
+                time: '12:00 PM', type: 'Peranakan Cuisine', name: "Nancy's Kitchen", action: 'reserve',
+                desc: 'A long-running Nyonya institution serving ayam pongteh and itik tim — slow-cooked comfort dishes rooted in Peranakan home cooking.'
+              },
+              {
+                time: '05:00 PM', type: 'Roadside Snack', name: 'Klebang Coconut Shake stalls', action: null,
+                desc: 'Beachside vendors blend coconut flesh, ice and gula melaka into a shake served straight in the shell — a Klebang institution.'
+              }
+            ]
+          },
+          {
+            title: 'Sweets & Suppers', stops: [
+              {
+                time: '10:00 AM', type: 'Sweets', name: 'Ban Lee Siang', action: null,
+                desc: 'Watch dodol being stirred by hand over wood-fired copper cauldrons, a slow craft that has barely changed in decades.'
+              },
+              {
+                time: '07:00 PM', type: 'Peranakan Cuisine', name: 'Ole Sayang', action: 'reserve',
+                desc: 'Known for cincaluk-laced dishes and buah keluak, this family-run restaurant is a reliable stop for a full Nyonya spread.'
+              }
+            ]
+          },
+          {
+            title: 'Hawker Trail', stops: [
+              {
+                time: '09:00 AM', type: 'Sweets', name: 'Uptown Pahlawan Walk', action: null,
+                desc: 'a lively open-air night market and shopping area located in Banda Hilir, Melaka, Malaysia, near major landmarks like Menara Taming Sari and Dataran Pahlawan. It features local street food, souvenirs, clothes, and traditional snacks.'
+              },
+              {
+                time: '12:30 PM', type: 'Hawker Court', name: 'Medan Selera Warisan Makanan', action: null,
+                desc: 'A hawker court gathering Baba-Nyonya laksa, cendol and other local classics under one roof for an easy sampling lunch.'
+              }
+            ]
+          },
+          {
+            title: 'Snacks & Suppers', stops: [
+              {
+                time: '11:00 AM', type: 'Street Snack', name: 'Poh Piah Union', action: null,
+                desc: 'Fresh popiah rolled to order, packed with turnip, egg and prawn in a paper-thin handmade skin.'
+              },
+              {
+                time: '07:00 PM', type: 'Peranakan Cuisine', name: 'Restoran Amy Heritage Nyonya Cuisine', action: 'reserve',
+                desc: 'A home-style Peranakan kitchen where the menu changes with what was fresh at the market that morning.'
+              }
+            ]
+          },
+          {
+            title: 'Coastal Flavours', stops: [
+              {
+                time: '12:00 PM', type: 'Seafood', name: 'Umbai Seafood stalls', action: null,
+                desc: 'A fishing village strip of open-air stalls grilling the morning catch over charcoal, best enjoyed with a sea breeze.'
+              },
+              {
+                time: '05:00 PM', type: 'Café', name: 'Bibik Vintage Café', action: null,
+                desc: 'A Peranakan-styled café for kopi and kuih in a room full of vintage Straits Chinese furnishings.'
+              }
+            ]
+          }
+        ]
+      },
+
+      nature: {
+        label: 'Nature',
+        badgeIcon: 'leaf',
+        badgeColor: '#3f6b4a',
+        days: [
+          {
+            title: 'Green Edges of the Old Town', stops: [
+              {
+                time: '09:00 AM', type: 'Nature Reserve', name: 'Ayer Keroh Recreational Forest', action: null,
+                desc: 'A forest reserve just outside the city with a canopy walkway, lake trails and shaded paths through secondary jungle.'
+              },
+              {
+                time: '04:00 PM', type: 'Riverside Park', name: 'Taman Rempah & Riverwalk', action: null,
+                desc: 'A spice garden and river promenade near the historic core, a calm green pause between heritage-hopping stops.'
+              }
+            ]
+          },
+          {
+            title: 'Wildlife & Gardens', stops: [
+              {
+                time: '09:00 AM', type: 'Wildlife Park', name: 'Zoo Melaka', action: 'book',
+                desc: 'Home to hornbills, tapirs and other native Malaysian species, with an after-dark Night Safari option on select evenings.'
+              },
+              {
+                time: '02:00 PM', type: 'Botanical Garden', name: 'Taman Botanikal Melaka', action: null,
+                desc: 'A sprawling botanical garden with themed plant collections and quiet walking loops shaded by mature trees.'
+              }
+            ]
+          },
+          {
+            title: 'Coastal Air', stops: [
+              {
+                time: '08:00 AM', type: 'Beach', name: 'Klebang Beach', action: null,
+                desc: 'A long sandy stretch popular for sunset walks, coconut shakes and the wreck of the SS Beluran offshore.'
+              },
+              {
+                time: '05:30 PM', type: 'Coastal Trail', name: 'Tanjung Tuan', action: null,
+                desc: 'A coastal rainforest hike leading to a historic lighthouse and the rocky ocean-view ridge of Bukit Batu Putih, plus a jungle trail down to Monkey Bay.'
+              }
+            ]
+          },
+          {
+            title: 'Further Shores', stops: [
+              {
+                time: '09:00 AM', type: 'Beach', name: 'Pengkalan Balak', action: null,
+                desc: 'Clearer water and quieter sand than the town beaches, roughly forty minutes up the coast from Malacca city.'
+              },
+              {
+                time: '03:00 PM', type: 'Forest Reserve', name: 'Kesidang Recreational Forest', action: null,
+                desc: 'Jungle trekking trails and a suspension bridge over a small ravine, a good half-day trek for the moderately fit.'
+              }
+            ]
+          },
+          {
+            title: 'Hills & Water', stops: [
+              {
+                time: '08:00 AM', type: 'Lake', name: 'Air Keroh Lake', action: null,
+                desc: 'A lakeside park with paddleboats and jogging trails, popular with local families on weekend mornings.'
+              },
+              {
+                time: '04:00 PM', type: 'Hill Trail', name: 'Bukit China Forest Walk', action: null,
+                desc: 'Shaded hillside paths through the historic cemetery grounds, doubling as one of the greenest hikes in the city centre.'
+              }
+            ]
+          },
+          {
+            title: 'Upriver & Uphill', stops: [
+              {
+                time: '09:00 AM', type: 'River Tour', name: 'Melaka River — upstream kampung stretch', action: 'book',
+                desc: 'A quieter upstream boat route past mangroves and kampung houses, away from the postcard stretch near Jonker Street.'
+              },
+              {
+                time: '03:00 PM', type: 'Nature Park', name: 'Taman Rimba Bukit Senjuang', action: null,
+                desc: 'A hillside recreational park with lookout points over the city, a good spot to catch the afternoon light.'
+              }
+            ]
+          },
+          {
+            title: 'Island & Mangrove', stops: [
+              {
+                time: '09:00 AM', type: 'Island Excursion', name: 'Pulau Besar boat trip', action: 'book',
+                desc: 'A short boat ride to a small island off Malacca\'s coast, with quiet beaches and a short forest trail inland.'
+              },
+              {
+                time: '04:00 PM', type: 'Mangrove Walk', name: 'Sungai Duyung Mangrove area', action: null,
+                desc: 'A mangrove boardwalk good for birdwatching, with mudskippers and fiddler crabs visible at low tide.'
+              }
+            ]
+          }
+        ]
+      }
+    };
+
+    const PLACEHOLDER_COLORS = ['c76a4a', '3b2a20', '5c7a6a', '7a5c3b', '4a5c7a', '8a5c7a', '6a7a4a', '2c3a5e'];
+
+    /* =========================================================
+       STATE + RENDER
+    ========================================================= */
+    const state = { category: 'heritage', days: 3 };
+
+    function render() {
+      const cat = itineraryData[state.category];
+      const days = cat.days.slice(0, state.days);
+      const container = document.getElementById('trailSections');
+      container.innerHTML = '';
+
+      let colorIdx = 0;
+      const allStops = [];
+
+      days.forEach((day, dIdx) => {
+        allStops.push(...day.stops);
+
+        const section = document.createElement('section');
+        section.className = 'trail-section';
+
+        const head = document.createElement('div');
+        head.className = 'section-head';
+        head.innerHTML = '<div class="section-num">' + String(dIdx + 1).padStart(2, '0') + '</div><h2>' + day.title + '</h2>';
+        section.appendChild(head);
+
+        const timeline = document.createElement('div');
+        timeline.className = 'timeline';
+
+        day.stops.forEach(stop => {
+          const color = PLACEHOLDER_COLORS[colorIdx % PLACEHOLDER_COLORS.length];
+          colorIdx++;
+
+          const article = document.createElement('article');
+          article.className = 'stop-card';
+
+          let actionsHtml = '';
+          if (stop.action) {
+            actionsHtml += '<a class="btn-outline" href="' + searchUrl(stop.name, ACTION_SUFFIX[stop.action]) + '" target="_blank" rel="noopener">' + ACTION_LABEL[stop.action] + '</a>';
+          }
+          actionsHtml += '<a href="' + mapsUrl(stop.name) + '" target="_blank" rel="noopener" class="link-with-icon">' + ICONS.map + ' VIEW ON MAP</a>';
+
+          const imgSrc = CUSTOM_IMAGES[stop.name] || stop.image || placeholderImg(stop.name, color);
+
+          article.innerHTML =
+            '<img class="stop-image" src="' + imgSrc + '" alt="' + stop.name + '">' +
+            '<div class="stop-body">' +
+            '<div class="stop-meta">' +
+            '<span class="stop-time">' + stop.time + ' &bull; ' + stop.type + '</span>' +
+            '<div class="stop-badge" style="background:' + cat.badgeColor + '">' + ICONS[cat.badgeIcon] + '</div>' +
+            '</div>' +
+            '<h3>' + stop.name + '</h3>' +
+            '<p>' + stop.desc + '</p>' +
+            '<div class="stop-actions">' + actionsHtml + '</div>' +
+            '</div>';
+
+          timeline.appendChild(article);
+        });
+
+        section.appendChild(timeline);
+        container.appendChild(section);
+      });
+
+      document.getElementById('stopsCount').textContent = allStops.length;
+      document.getElementById('durationVal').textContent = state.days + ' Days';
+      document.getElementById('currentStop').textContent = allStops[0] ? allStops[0].name : '—';
+      document.getElementById('endStop').textContent = allStops.length ? allStops[allStops.length - 1].name : '—';
+    }
+
+    /* =========================================================
+       FILTER HANDLERS
+    ========================================================= */
+    document.querySelectorAll('.filter-row.categories .filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.filter-row.categories .filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        state.category = pill.dataset.filter;
+        render();
+      });
+    });
+
+    document.querySelectorAll('.filter-row.days .filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('.filter-row.days .filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        state.days = parseInt(pill.dataset.days, 10);
+        render();
+      });
+    });
+
+    /* =========================================================
+       PDF EXPORT (client-side, via jsPDF — reflects the plan
+       currently on screen: category + day count)
+    ========================================================= */
+    document.getElementById('downloadPdfBtn').addEventListener('click', function () {
+      const btn = this;
+      const originalHtml = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Preparing PDF…';
+
+      try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+        const cat = itineraryData[state.category];
+        const days = cat.days.slice(0, state.days);
+        const marginX = 48;
+        const pageBottom = 760;
+        let y = 56;
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(20);
+        doc.setTextColor(138, 52, 52);
+        doc.text('Warisan Malaysia', marginX, y);
+        y += 22;
+
+        doc.setFontSize(13);
+        doc.setTextColor(60, 60, 60);
+        doc.text(cat.label + ' Trail \u2014 ' + state.days + '-Day Plan', marginX, y);
+        y += 8;
+
+        doc.setDrawColor(224, 166, 62);
+        doc.setLineWidth(1);
+        doc.line(marginX, y + 8, 547, y + 8);
+        y += 30;
+
+        days.forEach((day, i) => {
+          if (y > pageBottom - 40) { doc.addPage(); y = 56; }
+
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(13);
+          doc.setTextColor(138, 52, 52);
+          doc.text('Day ' + (i + 1) + ': ' + day.title, marginX, y);
+          y += 20;
+
+          day.stops.forEach(stop => {
+            if (y > pageBottom - 60) { doc.addPage(); y = 56; }
+
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(11);
+            doc.setTextColor(20, 20, 20);
+            doc.text(stop.time + '  \u2014  ' + stop.name, marginX + 12, y);
+            y += 15;
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(10);
+            doc.setTextColor(95, 95, 95);
+            const lines = doc.splitTextToSize(stop.desc, 470);
+            doc.text(lines, marginX + 12, y);
+            y += lines.length * 13 + 4;
+
+            doc.setFont('helvetica', 'italic');
+            doc.setFontSize(9);
+            doc.setTextColor(190, 145, 45);
+            doc.text('Type: ' + stop.type, marginX + 12, y);
+            y += 20;
+          });
+
+          y += 6;
+        });
+
+        if (y > pageBottom - 30) { doc.addPage(); y = 56; }
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(140, 140, 140);
+        doc.text('Generated from warisan-malaysia heritage trails planner. Verify hours & bookings before you travel.', marginX, 800);
+
+        doc.save('warisan-malaysia-' + state.category + '-' + state.days + 'day-plan.pdf');
+      } catch (err) {
+        alert('Could not generate the PDF: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+      }
+    });
+
+    /* Initial render on load */
+    render();
+  </script>
+
+  <script src="NavFooter/navfooter.js"></script>
+
+</body>
+
+</html>

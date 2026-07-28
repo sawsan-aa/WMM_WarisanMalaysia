@@ -3,7 +3,7 @@
    ---------------------------------------------------------
    Page-specific layer only. Loaded AFTER Style_Sw.Css (the
    shared base: palette, fonts, section/container, reveals)
-   and BEFORE NavFooter/navfooter.css, exactly like the other
+   and BEFORE nav_footer.css, exactly like the other
    pages of the site.
    ========================================================= */
 

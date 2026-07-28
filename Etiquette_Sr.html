@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cultural Etiquette | Warisan Malaysia</title>
+  <link rel="stylesheet" href="nav_footer.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #FDF8F0;
+      color: #3A3733;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding: 70px 0 60px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #A67C21;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem;
+      color: #8B1A1A;
+    }
+
+    .lead {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #6B6660;
+    }
+
+    /* ---------- SECTION ROW ---------- */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 26px;
+      margin-bottom: 20px;
+    }
+
+    .row>* {
+      flex: 1 1 280px;
+    }
+
+    .row.flip .intro {
+      order: 2;
+    }
+
+    .intro h2 {
+      margin: 0 0 14px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #A67C21;
+    }
+
+    .intro p {
+      margin: 0 0 22px;
+      font-size: .95rem;
+      color: #6B6660;
+    }
+
+    .note {
+      background: #EFEBE4;
+      padding: 20px 22px;
+    }
+
+    .note i {
+      font-size: 20px;
+      color: #A67C21;
+    }
+
+    .note h3 {
+      margin: 6px 0 2px;
+      font-size: .72rem;
+      letter-spacing: .14em;
+    }
+
+    .note p {
+      margin: 0;
+      font-size: .9rem;
+      color: #55514C;
+    }
+
+    /* ---------- DO / DON'T CARDS ---------- */
+    .card {
+      position: relative;
+      background: #fff;
+      border: 1px solid;
+      border-radius: 10px;
+      padding: 38px 28px 24px;
+      text-align: center;
+    }
+
+    .card.do {
+      border-color: #A67C21;
+    }
+
+    .card.dont {
+      border-color: #8B1A1A;
+    }
+
+    .tag {
+      position: absolute;
+      top: -14px;
+      left: -14px;
+      padding: 7px 13px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .do .tag {
+      background: #8A6A15;
+    }
+
+    .dont .tag {
+      background: #8B1A1A;
+    }
+
+    .card>i {
+      font-size: 38px;
+    }
+
+    .do>i,
+    .do .verdict {
+      color: #A67C21;
+    }
+
+    .dont>i,
+    .dont .verdict {
+      color: #8B1A1A;
+    }
+
+    .card h3 {
+      margin: 10px 0 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: #2E2A26;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: .92rem;
+      color: #6B6660;
+    }
+
+    .card .verdict {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #EAE2D4;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    /* ---------- DIVIDER ---------- */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 760px;
+      margin: 54px auto;
+      color: #C9973A;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #E6DCC8;
+    }
+
+    @media (max-width: 820px) {
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .row.flip .intro {
+        order: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+
+      <a href="Homepage_Sw.html" class="nav-brand">
+        <img src="Assets/hibiscusIcon.png" alt="Warisan Malaysia" class="nav-brand-icon">
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="ph ph-list" id="navMenuIcon" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-links-wrapper" id="navLinks">
+
+        <a href="Homepage_Sw.html" class="nav-link">Home</a>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Discover
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Cities_Sw.html" class="dropdown-item">Cities Archive</a>
+            <a href="landmarks_Am.html" class="dropdown-item">Landmarks &amp; Monuments</a>
+            <a href="hiddengems_Am.html" class="dropdown-item">Hidden Gems</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Culture
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="ArtsCraft_Sb.html" class="dropdown-item">Craft Gallery</a>
+            <a href="LivingTraditions_Sb.html" class="dropdown-item">Living Traditions</a>
+            <a href="Sanctuaries_Pl.html" class="dropdown-item">Spiritual Spaces</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Taste &amp; Celebrate
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Dishes_Sw.html" class="dropdown-item">Signature Dishes</a>
+            <a href="Festivals_Sw.html" class="dropdown-item">Festivals</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <button type="button" class="nav-link">
+            Plan Your Trip
+            <i class="ph ph-caret-down nav-caret" aria-hidden="true"></i>
+          </button>
+          <div class="dropdown">
+            <a href="Essentials_Pl.html" class="dropdown-item">Travel Essentials</a>
+            <a href="travelPlans_Pl.html" class="dropdown-item">Travel Plans</a>
+            <a href="Etiquette_Pl.html" class="dropdown-item">Cultural Etiquette</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero wrap">
+    <p class="eyebrow">TRAVEL MINDFULLY</p>
+    <h1>Cultural Etiquette</h1>
+    <p class="lead">A respectful traveler is a welcomed guest. Malaysia is a tapestry of traditions; here is your
+      guide to navigating our customs with grace and warmth.</p>
+  </section>
+
+  <div class="wrap">
+
+    <!-- ─── 01 DRESS CODE ─── -->
+    <section class="row">
+      <div class="intro">
+        <h2>01. Dress Code</h2>
+        <p>Modesty is highly valued, especially when visiting religious sites. Loose, breathable fabrics are your
+          best friend in our tropical climate.</p>
+        <div class="note">
+          <i class="ph ph-info" aria-hidden="true"></i>
+          <h3>PRO TIP</h3>
+          <p>Always carry a light sarong or scarf in your bag for unexpected temple visits.</p>
+        </div>
+      </div>
+
+      <div class="card do">
+        <span class="tag">DO</span>
+        <i class="ph ph-coat-hanger" aria-hidden="true"></i>
+        <h3>Dress Modestly</h3>
+        <p>Cover shoulders and knees when visiting mosques, temples, or rural villages. It shows deep respect for
+          local values.</p>
+        <p class="verdict"><i class="ph ph-smiley" aria-hidden="true"></i> RESPECTFUL</p>
+      </div>
+
+      <div class="card dont">
+        <span class="tag">DON'T</span>
+        <i class="ph ph-prohibit" aria-hidden="true"></i>
+        <h3>Wear Skimpy Clothing</h3>
+        <p>Avoid short shorts, sleeveless tops, or swimwear outside of beach resorts and private pools to avoid
+          causing unintended offense.</p>
+        <p class="verdict"><i class="ph ph-warning" aria-hidden="true"></i> OFFENSIVE</p>
+      </div>
+    </section>
+
+    <div class="divider"><i class="ph ph-flower-lotus" aria-hidden="true"></i></div>
+
+    <!-- ─── 02 GREETINGS ─── -->
+    <section class="row flip">
+      <div class="intro">
+        <h2>02. Greetings</h2>
+        <p>Malaysians are warm and hospitable. How you acknowledge others sets the tone for your entire
+          interaction.</p>
+        <div class="note">
+          <i class="ph ph-translate" aria-hidden="true"></i>
+          <h3>LOCAL LINGO</h3>
+          <p>Saying "Terima Kasih" (Thank You) with a smile will open many doors and hearts.</p>
+        </div>
+      </div>
+
+      <div class="card do">
+        <span class="tag">DO</span>
+        <i class="ph ph-hand-heart" aria-hidden="true"></i>
+        <h3>The 'Salam'</h3>
+        <p>A gentle touch of both hands and bringing them to your heart is the traditional Malay greeting. A polite
+          nod and smile works universally.</p>
+        <p class="verdict"><i class="ph ph-heart" aria-hidden="true"></i> HEARTFELT</p>
+      </div>
+
+      <div class="card dont">
+        <span class="tag">DON'T</span>
+        <i class="ph ph-hand-palm" aria-hidden="true"></i>
+        <h3>Initiate Contact</h3>
+        <p>Avoid initiating handshakes with the opposite gender unless they offer first. Some may prefer a polite
+          bow for religious reasons.</p>
+        <p class="verdict"><i class="ph ph-hand" aria-hidden="true"></i> BOUNDARY</p>
+      </div>
+    </section>
+
+    <div class="divider"><i class="ph ph-flower-lotus" aria-hidden="true"></i></div>
+
+    <!-- ─── 03 DINING ─── -->
+    <section class="row">
+      <div class="intro">
+        <h2>03. Dining</h2>
+        <p>Food is the soul of Malaysia. Sharing a meal is a sacred act of community, and knowing the rules makes
+          it even more delicious.</p>
+        <div class="note">
+          <i class="ph ph-fork-knife" aria-hidden="true"></i>
+          <h3>CULTURAL FACT</h3>
+          <p>In traditional homes, water is often brought in a 'kendi' to wash hands at the table.</p>
+        </div>
+      </div>
+
+      <div class="card do">
+        <span class="tag">DO</span>
+        <i class="ph ph-hand-tap" aria-hidden="true"></i>
+        <h3>Use Your Right Hand</h3>
+        <p>Always use your right hand for eating, passing food, or giving/receiving items. The left hand is
+          traditionally considered unhygienic.</p>
+        <p class="verdict"><i class="ph ph-bowl-food" aria-hidden="true"></i> TRADITIONAL</p>
+      </div>
+
+      <div class="card dont">
+        <span class="tag">DON'T</span>
+        <i class="ph ph-x-circle" aria-hidden="true"></i>
+        <h3>Point With Fingers</h3>
+        <p>Never point at people or food with your index finger. Use your thumb with fingers folded, or a polite
+          open-palm gesture instead.</p>
+        <p class="verdict"><i class="ph ph-prohibit" aria-hidden="true"></i> IMPOLITE</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <div class="footer" id="plan" style="margin-top:70px;">
+    <img src="Assets/hibiscus.png" alt="" class="footer-hibiscus" draggable="false">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="Homepage_Sw.html" class="logo">
+          <img src="Assets/hibiscusIcon.png" alt="" class="footer-logo-icon">
+          <span class="logo-text">WARISAN MALAYSIA</span>
+        </a>
+        <p class="footer-desc">An award-winning editorial journal tracing the majestic, living synthesis of
+          Malay, Chinese, Indian, and Bornean cultures across the Malaysian archipelago.</p>
+        <div class="footer-socials">
+          <div class="social-icon" title="Email"><i class="ph ph-envelope" aria-hidden="true"></i></div>
+          <div class="social-icon" title="Phone"><i class="ph ph-phone" aria-hidden="true"></i></div>
+          <div class="social-icon" title="Location"><i class="ph ph-map-pin" aria-hidden="true"></i></div>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">DISCOVER</h4>
+        <ul class="footer-links">
+          <li><a href="Cities_Sw.html">Cities Archive</a></li>
+          <li><a href="landmarks_Am.html">Landmarks &amp; Monuments</a></li>
+          <li><a href="hiddengems_Am.html">Hidden Gems</a></li>
+        </ul>
+        <h4 class="footer-col-title">PLAN YOUR TRIP</h4>
+        <ul class="footer-links">
+          <li><a href="Essentials_Pl.html">Travel Essentials</a></li>
+          <li><a href="travelPlans_Pl.html">Travel Plans</a></li>
+          <li><a href="Etiquette_Pl.html">Cultural Etiquette</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">CULTURE</h4>
+        <ul class="footer-links">
+          <li><a href="ArtsCraft_Sb.html">Craft Gallery</a></li>
+          <li><a href="LivingTraditions_Sb.html">Living Traditions</a></li>
+          <li><a href="Sanctuaries_Pl.html">Spiritual Spaces</a></li>
+        </ul>
+        <h4 class="footer-col-title" style="margin-top:28px;">TASTE &amp; CELEBRATE</h4>
+        <ul class="footer-links">
+          <li><a href="Dishes_Sw.html">Signature Dishes</a></li>
+          <li><a href="Festivals_Sw.html">Festivals</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 All rights Reserved
+    </div>
+  </div>
+
+  <script src="NavFooter/navfooter.js"></script>
+
+</body>
+
+</html>
