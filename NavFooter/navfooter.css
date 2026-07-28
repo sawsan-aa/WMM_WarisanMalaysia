@@ -1,19 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   WARISAN MALAYSIA — SHARED NAVIGATION BAR + FOOTER
-   ---------------------------------------------------------------
-   Single source of truth for the sticky top navigation and the
-   site footer. Every page links this file LAST, after its own
-   stylesheet, so the nav / footer always look identical to the
-   Homepage no matter what the page stylesheet does.
-
-   Usage in every page <head>:
-       <link rel="stylesheet" href="nav_footer.css">
-   Usage before </body>:
-       <script src="NavFooter/navfooter.js"></script>
-   ═══════════════════════════════════════════════════════════════ */
-
-/* Fonts + icons the nav & footer depend on (kept here so a page
-   only needs the single link above for the shared UI to work). */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 @import url('https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css');
 
@@ -138,13 +122,13 @@
     position: relative;
 }
 
-.nav-item:hover > .nav-link,
-.nav-item:focus-within > .nav-link {
+.nav-item:hover>.nav-link,
+.nav-item:focus-within>.nav-link {
     color: var(--gold);
 }
 
-.nav-item:hover > .nav-link::after,
-.nav-item:focus-within > .nav-link::after {
+.nav-item:hover>.nav-link::after,
+.nav-item:focus-within>.nav-link::after {
     transform: scaleX(1);
 }
 
@@ -219,7 +203,7 @@
     background: rgba(201, 151, 58, .06);
 }
 
-.dropdown-item + .dropdown-item {
+.dropdown-item+.dropdown-item {
     border-top: 1px solid rgba(42, 58, 92, .07);
 }
 
@@ -450,12 +434,12 @@
         display: none;
     }
 
-    .nav-item:hover > .nav-link,
-    .nav-item:focus-within > .nav-link {
+    .nav-item:hover>.nav-link,
+    .nav-item:focus-within>.nav-link {
         color: var(--navy-lt);
     }
 
-    .nav-item.open > .nav-link,
+    .nav-item.open>.nav-link,
     .main-nav .nav-link.active {
         color: var(--gold);
     }
