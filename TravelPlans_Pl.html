@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Must-Visit Heritage Trails of Malacca | Warisan Malaysia</title>
+  <title>Plan Your Trip | Warisan Malaysia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
@@ -651,7 +651,7 @@
 
   <div class="page">
     <div class="eyebrow">CURATED JOURNEYS</div>
-    <h1 class="page-title">Must-Visit Heritage Trails of Malacca</h1>
+    <h1 class="page-title">Plan Your Trip | Must Visits</h1>
 
     <div class="filter-block">
       <div class="filter-row categories">
@@ -1284,9 +1284,11 @@
 
           let actionsHtml = '';
           if (stop.action) {
-            actionsHtml += '<a class="btn-outline" href="' + searchUrl(stop.name, ACTION_SUFFIX[stop.action]) + '" target="_blank" rel="noopener">' + ACTION_LABEL[stop.action] + '</a>';
+            const bookHref = CUSTOM_BOOKING_LINKS[stop.name] || searchUrl(stop.name, ACTION_SUFFIX[stop.action]);
+            actionsHtml += '<a class="btn-outline" href="' + bookHref + '" target="_blank" rel="noopener">' + ACTION_LABEL[stop.action] + '</a>';
           }
-          actionsHtml += '<a href="' + mapsUrl(stop.name) + '" target="_blank" rel="noopener" class="link-with-icon">' + ICONS.map + ' VIEW ON MAP</a>';
+          const mapHref = CUSTOM_MAP_LINKS[stop.name] || mapsUrl(stop.name);
+          actionsHtml += '<a href="' + mapHref + '" target="_blank" rel="noopener" class="link-with-icon">' + ICONS.map + ' VIEW ON MAP</a>';
 
           const imgSrc = CUSTOM_IMAGES[stop.name] || stop.image || placeholderImg(stop.name, color);
 
