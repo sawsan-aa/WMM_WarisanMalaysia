@@ -896,11 +896,56 @@
       // 'Wild Coriander': 'https://your-image-url-here.jpg',
     };
 
+
+    /* =========================================================
+       CUSTOM BOOKING / RESERVATION LINKS — same idea as
+       CUSTOM_IMAGES above. Paste a real booking, reservation,
+       or ticketing URL for any stop name below and its
+       "BOOK ENTRY" / "RESERVE TABLE" button will link straight
+       there. Leave a place out and it keeps using the live
+       Google search fallback — nothing else breaks.
+    
+       Example:
+       'Menara Taming Sari': 'https://www.melaka.gov.my/menara-taming-sari-tickets',
+       'Nancy\'s Kitchen': 'https://www.chope.co/malacca-restaurants/restaurant/nancys-kitchen',
+    ========================================================= */
+    const CUSTOM_BOOKING_LINKS = {
+      'Stadthuys Red Square': 'https://www.viator.com/en-MY/Melaka-attractions/Stadthuys/d36678-a13699',
+      'Baba & Nyonya Heritage Museum': 'https://www.babanyonyamuseum.com/ticket/',
+      'Menara Taming Sari': 'https://www.menaratamingsari.com/ms/shop/',
+      'Melaka River Cruise': 'https://www.redbus.my/things-to-do/malaysia/melaka/melaka-river-cruise?countryId=2&cityId=192999&activityId=3778',
+      'Wild Coriander': 'https://autoreserve.com/en/restaurants/nAgpMFgUpkQEwqnsrkFU',
+      'Capitol Satay': 'https://www.imperialheritage.com.my/local-attractions-capitol-satay-celup/',
+      'Nancy\'s Kitchen': 'https://eatatnancyskit.com/reservations/',
+      'Ole Sayang': 'https://olesayang.com/contact-us/',
+      'Restoran Amy Heritage Nyonya Cuisine': 'https://amyheritage.carrd.co/',
+      'Zoo Melaka': 'https://amazingzoomelaka.com.my/tickets',
+      'Melaka River — upstream kampung stretch': 'https://www.redbus.my/things-to-do/malaysia/melaka/melaka-river-cruise?countryId=2&cityId=192999&activityId=3778',
+      'Pulau Besar boat trip': 'https://www.besutjetty.com/',
+      // 'Menara Taming Sari': 'https://your-booking-url-here.com',
+      // 'Nancy\'s Kitchen': 'https://your-reservation-url-here.com',
+    };
+
+    /* =========================================================
+       CUSTOM MAP LINKS — optional. Same idea again: paste a
+       specific Google Maps (or other map) URL for any stop name
+       and "VIEW ON MAP" will use it instead of the auto-generated
+       search-based map link.
+    
+       Example:
+       'Bukit China': 'https://maps.app.goo.gl/yourShortLinkHere',
+    ========================================================= */
+    const CUSTOM_MAP_LINKS = {
+      // 'Bukit China': 'https://maps.app.goo.gl/yourShortLinkHere',
+    };
+
     /* =========================================================
        LINK HELPERS  — no guessed/possibly-dead URLs.
        Map = direct Google Maps lookup. Book/Reserve = live Google
        search, which itself surfaces the venue's real site/listing.
-    ========================================================= */
+       Both fall back to these generated links only when a stop's
+       name isn't found in CUSTOM_BOOKING_LINKS / CUSTOM_MAP_LINKS.
+        ========================================================= */
     function mapsUrl(name) {
       return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(name + ', Melaka, Malaysia');
     }
