@@ -596,6 +596,50 @@ body {
 
 }
 
+/* ===========================
+   Google Maps Links
+   =========================== */
+
+.location-link {
+
+    color: #9a6b2f;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
+}
+
+.location-link:hover {
+
+    color: #d49a4b;
+
+    text-decoration: underline;
+
+}
+
+/* Optional: nicer spacing */
+
+.card p {
+
+    margin-top: 12px;
+
+    line-height: 1.7;
+
+}
+
+.silat-text p,
+.wayang-text p,
+.video-text p {
+
+    margin-bottom: 18px;
+
+    line-height: 1.8;
+
+}
+
 /* MOBILE */
 
 @media(max-width:900px) {
