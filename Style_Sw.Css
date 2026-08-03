@@ -9,6 +9,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* keeps the sticky nav from covering the top of anchor targets */
+    scroll-padding-top: 70px;
 }
 
 body {
@@ -202,15 +204,24 @@ body {
 }
 
 .btn {
+    display: inline-block;
     padding: 12px 34px;
     font-family: 'Open Sans', sans-serif;
     font-size: .82rem;
     font-weight: 600;
     letter-spacing: .12em;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
     cursor: pointer;
     transition: all .3s ease;
     text-transform: none;
     border-radius: 2px;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--gold-lt);
+    outline-offset: 3px;
 }
 
 .btn-white {
